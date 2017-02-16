@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>2017-02-16-jm-direct-debit-area-map</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2017-02-16-jm-create-direct-data-csv</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11778,56 +11778,467 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Direct-debit-requires-that-a-list-of-banking-services-be-provided-to-employees-base-on:">Direct debit requires that a list of banking services be provided to employees base on:<a class="anchor-link" href="#Direct-debit-requires-that-a-list-of-banking-services-be-provided-to-employees-base-on:">&#182;</a></h2><ul>
-<li>Thier place of employment</li>
-<li>Place of residence</li>
-</ul>
-<p>This is an effort to automate the delivery of thjat information. For each employee, this script should:</p>
-<ol>
-<li>Provide a list of banking services located within 1 (radial?) mile of their home address</li>
-<li>Provide a map with the location of banking services coresponding to the list above (ennumerated?)</li>
-<li>Provide a list of banking services located within 1 (radial?) mile of their work address</li>
-<li>Provide a map with the location of banking services coresponding to the list above (ennumerated?)</li>
-</ol>
-<p>For the purposes of this proof of concept, banking services will be defined to include:</p>
-<ul>
-<li>Bank branches</li>
-<li>ATM machines</li>
-</ul>
-<p>Assumptions:</p>
-<ol>
-<li>Data will be provided in csv format<ul>
-<li>to include:<ul>
-<li>Name (First &amp; Last)</li>
-<li>Home Address</li>
-<li>Office location &amp; Address</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
+<p>Need to create a csv file of sample data to be used in direct debit map project
+Pulled only ny state address data from:
+<a href="https://openaddresses.io/">https://openaddresses.io/</a></p>
+<p>I will take a random sample of this because it's too big to store.  Plus I want to make sure that the addresses are not all from the same area.</p>
+<p>Will also need to add some names.  Pulled names from a name generator here:
+<a href="http://homepage.net/name_generator/">http://homepage.net/name_generator/</a></p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Imports">Imports<a class="anchor-link" href="#Imports">&#182;</a></h2>
+<h1 id="Address-Processing">Address Processing<a class="anchor-link" href="#Address-Processing">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Imports first</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">addr_file_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/raw_data/&#39;</span>
+<span class="n">addr_file_path</span> <span class="o">=</span> <span class="n">file_loc</span> <span class="o">+</span> <span class="s1">&#39;statewide.csv&#39;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">addr_file_path</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">#number of records in file (excludes header)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">skip</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">n</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>
+<span class="n">df_addr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">addr_file_path</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="n">skip</span><span class="p">)</span>
+</pre></div>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_addr</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;address_clean.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_addr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[40]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LON</th>
+      <th>LAT</th>
+      <th>NUMBER</th>
+      <th>STREET</th>
+      <th>UNIT</th>
+      <th>CITY</th>
+      <th>DISTRICT</th>
+      <th>REGION</th>
+      <th>POSTCODE</th>
+      <th>ID</th>
+      <th>HASH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-78.268175</td>
+      <td>41.999993</td>
+      <td>231</td>
+      <td>State Route 417</td>
+      <td>NaN</td>
+      <td>Genesee</td>
+      <td>Allegany</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>ALLE015411</td>
+      <td>7de24a64e25f5a9c</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-78.957996</td>
+      <td>42.335671</td>
+      <td>7785</td>
+      <td>Mosher Hollow Road</td>
+      <td>NaN</td>
+      <td>Leon</td>
+      <td>Cattaraugus</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CATT032886</td>
+      <td>a441fcddf181fd56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-78.638224</td>
+      <td>42.414260</td>
+      <td>9591</td>
+      <td>Stady Road</td>
+      <td>NaN</td>
+      <td>Ashford</td>
+      <td>Cattaraugus</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CATT033515</td>
+      <td>10998098516d504d</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-76.537013</td>
+      <td>42.109870</td>
+      <td>158</td>
+      <td>Dean Creek Road</td>
+      <td>Lot 1</td>
+      <td>Barton</td>
+      <td>Tioga</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>TIOG025428</td>
+      <td>08503b1194162de2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-76.822009</td>
+      <td>42.155956</td>
+      <td>2149</td>
+      <td>Grand Central Avenue</td>
+      <td>NaN</td>
+      <td>Horseheads</td>
+      <td>Chemung</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CHEM003932</td>
+      <td>a96782ac238d35a1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Name-Processing">Name Processing<a class="anchor-link" href="#Name-Processing">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">name_file_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/data/&#39;</span>
+<span class="n">name_file_path</span> <span class="o">=</span> <span class="n">name_file_loc</span> <span class="o">+</span> <span class="s1">&#39;names_clean.csv&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_name</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">name_file_path</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_name</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[47]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>First_name</th>
+      <th>Last_name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Brandon</td>
+      <td>Newman</td>
+      <td>brandon.newman@directdebitsample.com</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Dominic</td>
+      <td>Pullman</td>
+      <td>dominic.pullman@directdebitsample.com</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oliver</td>
+      <td>Murray</td>
+      <td>oliver.murray@directdebitsample.com</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rebecca</td>
+      <td>Tucker</td>
+      <td>rebecca.tucker@directdebitsample.com</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Boris</td>
+      <td>Metcalfe</td>
+      <td>boris.metcalfe@directdebitsample.com</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Combine-names-&amp;-addresses-and-save-to-folder">Combine names &amp; addresses and save to folder<a class="anchor-link" href="#Combine-names-&amp;-addresses-and-save-to-folder">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_name</span><span class="p">,</span> <span class="n">df_addr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[49]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>First_name</th>
+      <th>Last_name</th>
+      <th>Email</th>
+      <th>LON</th>
+      <th>LAT</th>
+      <th>NUMBER</th>
+      <th>STREET</th>
+      <th>UNIT</th>
+      <th>CITY</th>
+      <th>DISTRICT</th>
+      <th>REGION</th>
+      <th>POSTCODE</th>
+      <th>ID</th>
+      <th>HASH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Brandon</td>
+      <td>Newman</td>
+      <td>brandon.newman@directdebitsample.com</td>
+      <td>-78.268175</td>
+      <td>41.999993</td>
+      <td>231</td>
+      <td>State Route 417</td>
+      <td>NaN</td>
+      <td>Genesee</td>
+      <td>Allegany</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>ALLE015411</td>
+      <td>7de24a64e25f5a9c</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Dominic</td>
+      <td>Pullman</td>
+      <td>dominic.pullman@directdebitsample.com</td>
+      <td>-78.957996</td>
+      <td>42.335671</td>
+      <td>7785</td>
+      <td>Mosher Hollow Road</td>
+      <td>NaN</td>
+      <td>Leon</td>
+      <td>Cattaraugus</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CATT032886</td>
+      <td>a441fcddf181fd56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oliver</td>
+      <td>Murray</td>
+      <td>oliver.murray@directdebitsample.com</td>
+      <td>-78.638224</td>
+      <td>42.414260</td>
+      <td>9591</td>
+      <td>Stady Road</td>
+      <td>NaN</td>
+      <td>Ashford</td>
+      <td>Cattaraugus</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CATT033515</td>
+      <td>10998098516d504d</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rebecca</td>
+      <td>Tucker</td>
+      <td>rebecca.tucker@directdebitsample.com</td>
+      <td>-76.537013</td>
+      <td>42.109870</td>
+      <td>158</td>
+      <td>Dean Creek Road</td>
+      <td>Lot 1</td>
+      <td>Barton</td>
+      <td>Tioga</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>TIOG025428</td>
+      <td>08503b1194162de2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Boris</td>
+      <td>Metcalfe</td>
+      <td>boris.metcalfe@directdebitsample.com</td>
+      <td>-76.822009</td>
+      <td>42.155956</td>
+      <td>2149</td>
+      <td>Grand Central Avenue</td>
+      <td>NaN</td>
+      <td>Horseheads</td>
+      <td>Chemung</td>
+      <td>NY</td>
+      <td>NaN</td>
+      <td>CHEM003932</td>
+      <td>a96782ac238d35a1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;direct_debit_clean.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
