@@ -11790,7 +11790,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11813,11 +11813,11 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">addr_file_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/raw_data/&#39;</span>
-<span class="n">addr_file_path</span> <span class="o">=</span> <span class="n">file_loc</span> <span class="o">+</span> <span class="s1">&#39;statewide.csv&#39;</span>
+<span class="n">addr_file_path</span> <span class="o">=</span> <span class="n">addr_file_loc</span> <span class="o">+</span> <span class="s1">&#39;statewide.csv&#39;</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">addr_file_path</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">#number of records in file (excludes header)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">skip</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">n</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>
@@ -11831,7 +11831,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_addr</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;address_clean.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
@@ -11844,7 +11844,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_addr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11859,7 +11859,7 @@ Pulled only ny state address data from:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -11884,73 +11884,73 @@ Pulled only ny state address data from:
   <tbody>
     <tr>
       <th>0</th>
-      <td>-78.268175</td>
-      <td>41.999993</td>
-      <td>231</td>
-      <td>State Route 417</td>
+      <td>-77.716978</td>
+      <td>42.723047</td>
+      <td>6135</td>
+      <td>West Lake Road</td>
       <td>NaN</td>
-      <td>Genesee</td>
-      <td>Allegany</td>
+      <td>Groveland</td>
+      <td>Livingston</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>ALLE015411</td>
-      <td>7de24a64e25f5a9c</td>
+      <td>LIVI017568</td>
+      <td>b1632818c3836c3b</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-78.957996</td>
-      <td>42.335671</td>
-      <td>7785</td>
-      <td>Mosher Hollow Road</td>
+      <td>-77.603544</td>
+      <td>42.364774</td>
+      <td>2258</td>
+      <td>County Route 70A</td>
       <td>NaN</td>
-      <td>Leon</td>
-      <td>Cattaraugus</td>
+      <td>Fremont</td>
+      <td>Steuben</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CATT032886</td>
-      <td>a441fcddf181fd56</td>
+      <td>STEU023552</td>
+      <td>ce11d7ab023c7fcc</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-78.638224</td>
-      <td>42.414260</td>
-      <td>9591</td>
-      <td>Stady Road</td>
-      <td>NaN</td>
-      <td>Ashford</td>
-      <td>Cattaraugus</td>
+      <td>-76.495152</td>
+      <td>42.455408</td>
+      <td>509</td>
+      <td>Lake Street</td>
+      <td>Unit E6</td>
+      <td>Ithaca</td>
+      <td>Tompkins</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CATT033515</td>
-      <td>10998098516d504d</td>
+      <td>TOMP038695</td>
+      <td>00089082814cdd76</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-76.537013</td>
-      <td>42.109870</td>
-      <td>158</td>
-      <td>Dean Creek Road</td>
-      <td>Lot 1</td>
-      <td>Barton</td>
-      <td>Tioga</td>
+      <td>-77.650426</td>
+      <td>43.212123</td>
+      <td>3</td>
+      <td>Bonesteel Circle</td>
+      <td>Unit 3</td>
+      <td>Greece</td>
+      <td>Monroe</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>TIOG025428</td>
-      <td>08503b1194162de2</td>
+      <td>MONR313161</td>
+      <td>b5f812a2285596b3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-76.822009</td>
-      <td>42.155956</td>
-      <td>2149</td>
-      <td>Grand Central Avenue</td>
+      <td>-77.618886</td>
+      <td>43.237209</td>
+      <td>222</td>
+      <td>Afton Street</td>
       <td>NaN</td>
-      <td>Horseheads</td>
-      <td>Chemung</td>
+      <td>Rochester</td>
+      <td>Monroe</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CHEM003932</td>
-      <td>a96782ac238d35a1</td>
+      <td>MONR049265</td>
+      <td>f66d324ff7ad33cc</td>
     </tr>
   </tbody>
 </table>
@@ -11974,7 +11974,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">name_file_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/data/&#39;</span>
@@ -11988,7 +11988,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_name</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">name_file_path</span><span class="p">)</span>
@@ -12001,7 +12001,7 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_name</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12016,7 +12016,7 @@ Pulled only ny state address data from:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[47]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12077,16 +12077,21 @@ Pulled only ny state address data from:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Combine-names-&amp;-addresses-and-save-to-folder">Combine names &amp; addresses and save to folder<a class="anchor-link" href="#Combine-names-&amp;-addresses-and-save-to-folder">&#182;</a></h1>
+<h2 id="Office-location-processing">Office location processing<a class="anchor-link" href="#Office-location-processing">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_name</span><span class="p">,</span> <span class="n">df_addr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">office_file_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/raw_data/&#39;</span>
+<span class="n">office_file_path</span> <span class="o">=</span> <span class="n">office_file_loc</span> <span class="o">+</span> <span class="s1">&#39;statewide.csv&#39;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">addr_file_path</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">#number of records in file (excludes header)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">skip</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">n</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>
+<span class="n">df_office</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">office_file_path</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="n">skip</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12096,7 +12101,151 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df_office</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[44]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;LON&#39;,
+ &#39;LAT&#39;,
+ &#39;NUMBER&#39;,
+ &#39;STREET&#39;,
+ &#39;UNIT&#39;,
+ &#39;CITY&#39;,
+ &#39;DISTRICT&#39;,
+ &#39;REGION&#39;,
+ &#39;POSTCODE&#39;,
+ &#39;ID&#39;,
+ &#39;HASH&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_office</span> <span class="o">=</span> <span class="n">df_office</span><span class="p">[[</span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span> <span class="s2">&quot;STREET&quot;</span><span class="p">,</span> <span class="s2">&quot;CITY&quot;</span><span class="p">,</span> <span class="s2">&quot;POSTCODE&quot;</span><span class="p">]]</span>
+<span class="n">df_office</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OFFICE_NUMBER&quot;</span><span class="p">,</span> <span class="s2">&quot;OFFICE_STREET&quot;</span><span class="p">,</span> <span class="s2">&quot;OFFICE_CITY&quot;</span><span class="p">,</span> <span class="s2">&quot;OFFICE_POSTCODE&quot;</span><span class="p">]</span>
+<span class="n">df_office</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[45]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OFFICE_NUMBER</th>
+      <th>OFFICE_STREET</th>
+      <th>OFFICE_CITY</th>
+      <th>OFFICE_POSTCODE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>311</td>
+      <td>East Connell Street</td>
+      <td>Olean</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>179</td>
+      <td>Newman Street</td>
+      <td>Concord</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9477</td>
+      <td>Foster Wheeler Road</td>
+      <td>North Dansville</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1140</td>
+      <td>Sullivan Street</td>
+      <td>Elmira</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>231</td>
+      <td>Pritchard Avenue</td>
+      <td>Corning</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Combine-names,-addresses,-and-office-locations-and-save-to-folder">Combine names, addresses, and office locations and save to folder<a class="anchor-link" href="#Combine-names,-addresses,-and-office-locations-and-save-to-folder">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_name</span><span class="p">,</span> <span class="n">df_addr</span><span class="p">,</span> <span class="n">df_office</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12111,7 +12260,7 @@ Pulled only ny state address data from:
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[49]:</div>
+<div class="prompt output_prompt">Out[48]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12134,6 +12283,10 @@ Pulled only ny state address data from:
       <th>POSTCODE</th>
       <th>ID</th>
       <th>HASH</th>
+      <th>OFFICE_NUMBER</th>
+      <th>OFFICE_STREET</th>
+      <th>OFFICE_CITY</th>
+      <th>OFFICE_POSTCODE</th>
     </tr>
   </thead>
   <tbody>
@@ -12142,85 +12295,105 @@ Pulled only ny state address data from:
       <td>Brandon</td>
       <td>Newman</td>
       <td>brandon.newman@directdebitsample.com</td>
-      <td>-78.268175</td>
-      <td>41.999993</td>
-      <td>231</td>
-      <td>State Route 417</td>
+      <td>-77.716978</td>
+      <td>42.723047</td>
+      <td>6135</td>
+      <td>West Lake Road</td>
       <td>NaN</td>
-      <td>Genesee</td>
-      <td>Allegany</td>
+      <td>Groveland</td>
+      <td>Livingston</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>ALLE015411</td>
-      <td>7de24a64e25f5a9c</td>
+      <td>LIVI017568</td>
+      <td>b1632818c3836c3b</td>
+      <td>311</td>
+      <td>East Connell Street</td>
+      <td>Olean</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Dominic</td>
       <td>Pullman</td>
       <td>dominic.pullman@directdebitsample.com</td>
-      <td>-78.957996</td>
-      <td>42.335671</td>
-      <td>7785</td>
-      <td>Mosher Hollow Road</td>
+      <td>-77.603544</td>
+      <td>42.364774</td>
+      <td>2258</td>
+      <td>County Route 70A</td>
       <td>NaN</td>
-      <td>Leon</td>
-      <td>Cattaraugus</td>
+      <td>Fremont</td>
+      <td>Steuben</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CATT032886</td>
-      <td>a441fcddf181fd56</td>
+      <td>STEU023552</td>
+      <td>ce11d7ab023c7fcc</td>
+      <td>179</td>
+      <td>Newman Street</td>
+      <td>Concord</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Oliver</td>
       <td>Murray</td>
       <td>oliver.murray@directdebitsample.com</td>
-      <td>-78.638224</td>
-      <td>42.414260</td>
-      <td>9591</td>
-      <td>Stady Road</td>
-      <td>NaN</td>
-      <td>Ashford</td>
-      <td>Cattaraugus</td>
+      <td>-76.495152</td>
+      <td>42.455408</td>
+      <td>509</td>
+      <td>Lake Street</td>
+      <td>Unit E6</td>
+      <td>Ithaca</td>
+      <td>Tompkins</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CATT033515</td>
-      <td>10998098516d504d</td>
+      <td>TOMP038695</td>
+      <td>00089082814cdd76</td>
+      <td>9477</td>
+      <td>Foster Wheeler Road</td>
+      <td>North Dansville</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Rebecca</td>
       <td>Tucker</td>
       <td>rebecca.tucker@directdebitsample.com</td>
-      <td>-76.537013</td>
-      <td>42.109870</td>
-      <td>158</td>
-      <td>Dean Creek Road</td>
-      <td>Lot 1</td>
-      <td>Barton</td>
-      <td>Tioga</td>
+      <td>-77.650426</td>
+      <td>43.212123</td>
+      <td>3</td>
+      <td>Bonesteel Circle</td>
+      <td>Unit 3</td>
+      <td>Greece</td>
+      <td>Monroe</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>TIOG025428</td>
-      <td>08503b1194162de2</td>
+      <td>MONR313161</td>
+      <td>b5f812a2285596b3</td>
+      <td>1140</td>
+      <td>Sullivan Street</td>
+      <td>Elmira</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Boris</td>
       <td>Metcalfe</td>
       <td>boris.metcalfe@directdebitsample.com</td>
-      <td>-76.822009</td>
-      <td>42.155956</td>
-      <td>2149</td>
-      <td>Grand Central Avenue</td>
+      <td>-77.618886</td>
+      <td>43.237209</td>
+      <td>222</td>
+      <td>Afton Street</td>
       <td>NaN</td>
-      <td>Horseheads</td>
-      <td>Chemung</td>
+      <td>Rochester</td>
+      <td>Monroe</td>
       <td>NY</td>
       <td>NaN</td>
-      <td>CHEM003932</td>
-      <td>a96782ac238d35a1</td>
+      <td>MONR049265</td>
+      <td>f66d324ff7ad33cc</td>
+      <td>231</td>
+      <td>Pritchard Avenue</td>
+      <td>Corning</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -12235,10 +12408,11 @@ Pulled only ny state address data from:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_final_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;direct_debit_clean.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ouput_loc</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jonathan/DirectDebit/data/&#39;</span>
+<span class="n">df_final_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">ouput_loc</span> <span class="o">+</span> <span class="s1">&#39;direct_debit_clean.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
