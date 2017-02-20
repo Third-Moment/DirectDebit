@@ -26,10 +26,57 @@
 # ## Imports
 # 
 
-# In[4]:
+# In[30]:
 
 #Imports first
 
 import os
 import matplotlib.pyplot as plt
+import requests
+import pandas as pd
+
+
+# ## Convert home address into lat-long
+
+# In[ ]:
+
+
+
+
+# ## Convert office address into lat-long
+
+# In[ ]:
+
+
+
+
+# ## Search for banking services near home
+
+# In[ ]:
+
+
+
+
+# ## Search for banking services near office
+
+# ####  Get API key - stored in file name: gm-config.config
+
+# In[25]:
+
+apikey_path = "C:/Users/Jonathan/Google Drive/"
+
+
+# In[29]:
+
+with open(apikey_path + 'gm_config.config', 'r') as f:
+    api_key = f.readline()
+
+
+# In[ ]:
+
+place_type = 'atm'
+near_radius = 1 # in miles
+keywords = 'bank'
+search_location = ''
+KEY = api_key
 

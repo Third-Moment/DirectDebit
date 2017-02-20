@@ -22,6 +22,8 @@ import random
 
 addr_file_loc = 'C:/Users/Jonathan/DirectDebit/raw_data/'
 addr_file_path = addr_file_loc + 'statewide.csv'
+ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
+
 n = sum(1 for line in open(addr_file_path)) - 1 #number of records in file (excludes header)
 s = 100
 skip = sorted(random.sample(range(1,n+1),n-s))
@@ -30,7 +32,7 @@ df_addr = pd.read_csv(addr_file_path, skiprows=skip)
 
 # In[36]:
 
-df_addr.to_csv('address_clean.csv', sep=',')
+df_addr.to_csv(ouput_loc + 'address_clean.csv', sep=',')
 
 
 # In[37]:
