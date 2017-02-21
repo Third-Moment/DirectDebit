@@ -26,7 +26,7 @@
 # ## Imports
 # 
 
-# In[115]:
+# In[177]:
 
 #Imports first
 
@@ -36,6 +36,8 @@ import requests
 import pandas as pd
 from googlemaps import googlemaps
 import json
+from PIL import Image
+from io import BytesIO
 
 
 # ## Import data
@@ -132,7 +134,7 @@ lat
 
 lat_long = dict([])
 lat['geometry']['location']
-lat_long = {lat: lat['geometry']['location']['lat'], lon:lat['geometry']['location']['lng']}
+lat_long = {'lat': lat['geometry']['location']['lat'], 'lon':lat['geometry']['location']['lng']}
 
 
 # In[107]:
@@ -180,6 +182,40 @@ m=foo.Map()
 # In[175]:
 
 m.add_point(38.8969, -77.02)
+
+
+# In[240]:
+
+payload = {#'zoom': '13',
+           'size': '400x400', 
+           #'scale': '1',
+           'maptype': 'roadmap',
+           'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
+
+
+# In[241]:
+
+
+r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
+print(r.url)
+
+
+# In[242]:
+
+i = Image.open(BytesIO(r.content))
+i
+
+
+# In[211]:
+
+get_ipython().set_next_input('https://maps.googleapis.com/maps/api/staticmap');get_ipython().magic('pinfo staticmap')
+    zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7CBrooklyn+Bridge,New+York,NY&
+
+
+# In[ ]:
+
+get_ipython().set_next_input('https://maps.googleapis.com/maps/api/staticmap');get_ipython().magic('pinfo staticmap')
+    zoom=13&size=600x300&maptype=roadmap&marker=color:blue%7Clabel:S%7CBrooklyn+Bridge+New+York+NY
 
 
 # In[ ]:
