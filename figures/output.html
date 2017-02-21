@@ -1,0 +1,17 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<div id="map-canvas" style="height: 100%; width: 100%"></div>
+<script type="text/javascript">
+    var map;
+    function show_map() {
+        map = new google.maps.map(document.getelementbyid("map-canvas"), {
+            zoom: 8,
+            center: new google.maps.latlng(39.908715, 116.397389)
+        });
+        new google.maps.marker({
+    position: new google.maps.latlng(39.908715, 116.397389),
+    map: map
+    });
+    }
+    google.maps.event.adddomlistener(window, 'load', show_map);
+</script>

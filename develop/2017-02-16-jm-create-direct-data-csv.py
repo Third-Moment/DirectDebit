@@ -10,7 +10,7 @@
 # Will also need to add some names.  Pulled names from a name generator here:
 # http://homepage.net/name_generator/
 
-# In[34]:
+# In[50]:
 
 import pandas as pd
 import random
@@ -18,7 +18,7 @@ import random
 
 # # Address Processing
 
-# In[35]:
+# In[51]:
 
 addr_file_loc = 'C:/Users/Jonathan/DirectDebit/raw_data/'
 addr_file_path = addr_file_loc + 'statewide.csv'
@@ -35,32 +35,32 @@ df_addr = pd.read_csv(addr_file_path, skiprows=skip)
 df_addr.to_csv(ouput_loc + 'address_clean.csv', sep=',')
 
 
-# In[37]:
+# In[52]:
 
 df_addr.head()
 
 
 # # Name Processing
 
-# In[38]:
+# In[53]:
 
 name_file_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 name_file_path = name_file_loc + 'names_clean.csv'
 
 
-# In[39]:
+# In[54]:
 
 df_name = pd.read_csv(name_file_path)
 
 
-# In[40]:
+# In[55]:
 
 df_name.head()
 
 
 # ## Office location processing
 
-# In[43]:
+# In[56]:
 
 office_file_loc = 'C:/Users/Jonathan/DirectDebit/raw_data/'
 office_file_path = office_file_loc + 'statewide.csv'
@@ -70,31 +70,31 @@ skip = sorted(random.sample(range(1,n+1),n-s))
 df_office = pd.read_csv(office_file_path, skiprows=skip)
 
 
-# In[44]:
+# In[57]:
 
 list(df_office)
 
 
-# In[45]:
+# In[58]:
 
-df_office = df_office[["NUMBER", "STREET", "CITY", "POSTCODE"]]
-df_office.columns = ["OFFICE_NUMBER", "OFFICE_STREET", "OFFICE_CITY", "OFFICE_POSTCODE"]
+df_office = df_office[["NUMBER", "STREET", "CITY", "REGION", "POSTCODE"]]
+df_office.columns = ["OFFICE_NUMBER", "OFFICE_STREET", "OFFICE_CITY", "OFFICE_REGION", "OFFICE_POSTCODE"]
 df_office.head()
 
 
 # # Combine names, addresses, and office locations and save to folder
 
-# In[47]:
+# In[59]:
 
 df_final_clean =pd.concat([df_name, df_addr, df_office], axis=1)
 
 
-# In[48]:
+# In[60]:
 
 df_final_clean.head()
 
 
-# In[49]:
+# In[64]:
 
 ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 df_final_clean.to_csv(ouput_loc + 'direct_debit_clean.csv', sep=',')

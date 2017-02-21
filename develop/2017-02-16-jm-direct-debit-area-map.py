@@ -26,7 +26,7 @@
 # ## Imports
 # 
 
-# In[30]:
+# In[115]:
 
 #Imports first
 
@@ -34,9 +34,46 @@ import os
 import matplotlib.pyplot as plt
 import requests
 import pandas as pd
+from googlemaps import googlemaps
+import json
 
+
+# ## Import data
 
 # ## Convert home address into lat-long
+
+# In[4]:
+
+file_loc = 'C:/Users/Jonathan/DirectDebit/data/'
+file_path = file_loc + 'direct_debit_clean.csv'
+ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
+
+df_clean = pd.read_csv(file_path)
+
+
+# In[5]:
+
+df_clean.head()
+
+
+# In[38]:
+
+# Loop through all of the addresses
+# for row in df_clean.iterrows():
+#     print(row)
+df_clean.iloc[0]
+
+
+# In[44]:
+
+df_clean.iloc[0]['NUMBER'] + df_clean.iloc[0]['STREET'] + df_clean.iloc[0]['CITY'] + df_clean.iloc[0]['REGION'].format()
+
+
+# In[54]:
+
+address = ' '.join([df_clean.iloc[0]['NUMBER'],df_clean.iloc[0]['STREET'], df_clean.iloc[0]['CITY'],df_clean.iloc[0]['REGION']])
+address
+
 
 # In[ ]:
 
@@ -52,31 +89,100 @@ import pandas as pd
 
 # ## Search for banking services near home
 
-# In[ ]:
+# In[62]:
 
-
+gmaps = googlemaps(api_key)
 
 
 # ## Search for banking services near office
 
 # ####  Get API key - stored in file name: gm-config.config
 
-# In[25]:
+# In[55]:
 
 apikey_path = "C:/Users/Jonathan/Google Drive/"
 
 
-# In[29]:
+# In[91]:
 
 with open(apikey_path + 'gm_config.config', 'r') as f:
     api_key = f.readline()
+    api_key = api_key.strip()
 
 
-# In[ ]:
+# In[63]:
 
 place_type = 'atm'
 near_radius = 1 # in miles
 keywords = 'bank'
 search_location = ''
 KEY = api_key
+
+
+# In[88]:
+
+from googlemaps import googlemaps
+gmaps = googlemaps.Client(key=api_key)
+address = 'Constitution Ave NW & 10th St NW, Washington, DC'
+lat= gmaps.geocode(address)[0]
+lat
+
+
+# In[108]:
+
+lat_long = dict([])
+lat['geometry']['location']
+lat_long = {lat: lat['geometry']['location']['lat'], lon:lat['geometry']['location']['lng']}
+
+
+# In[107]:
+
+lat_long
+
+
+# In[131]:
+
+banking_places = gmaps.places("banking services", location=(38.8921037,-77.0259612), type='atm')
+
+
+# In[132]:
+
+banking_places
+
+
+# In[133]:
+
+banking_places.keys()
+
+
+# In[117]:
+
+print(json.dumps(banking_places['results'], indent=4))
+
+
+# In[153]:
+
+for bank in banking_places['results']:
+     print([bank['name'], bank['formatted_address']])
+
+
+# In[173]:
+
+import importlib.util
+spec = importlib.util.spec_from_file_location("create_map_markers", 
+                                              "C:/Users/Jonathan/DirectDebit/src/create_map_markers.py")
+foo = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(foo)
+
+m=foo.Map()
+
+
+# In[175]:
+
+m.add_point(38.8969, -77.02)
+
+
+# In[ ]:
+
+
 
