@@ -162,10 +162,36 @@ banking_places.keys()
 print(json.dumps(banking_places['results'], indent=4))
 
 
-# In[153]:
+# In[287]:
 
+markers =[]
 for bank in banking_places['results']:
-     print([bank['name'], bank['formatted_address']])
+    markers.append(bank['formatted_address'])
+    print([bank['name'], bank['formatted_address']])
+
+
+# In[288]:
+
+##Google maps static API can only place 10 total markers
+
+s = "|";
+markers = s.join(markers[0:9])
+markers
+
+
+# In[ ]:
+
+
+
+
+# In[289]:
+
+markers
+
+
+# In[ ]:
+
+
 
 
 # In[173]:
@@ -193,14 +219,26 @@ payload = {#'zoom': '13',
            'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
 
 
-# In[241]:
+# In[290]:
+
+#attempt at all the markers
+payload = {#'zoom': '13',
+           'size': '400x400', 
+           #'scale': '1',
+           'maptype': 'roadmap',
+           'markers': markers,
+    'key':api_key}
+payload
+
+
+# In[291]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
 print(r.url)
 
 
-# In[242]:
+# In[292]:
 
 i = Image.open(BytesIO(r.content))
 i
@@ -208,14 +246,13 @@ i
 
 # In[211]:
 
-get_ipython().set_next_input('https://maps.googleapis.com/maps/api/staticmap');get_ipython().magic('pinfo staticmap')
-    zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7CBrooklyn+Bridge,New+York,NY&
+
 
 
 # In[ ]:
 
-get_ipython().set_next_input('https://maps.googleapis.com/maps/api/staticmap');get_ipython().magic('pinfo staticmap')
-    zoom=13&size=600x300&maptype=roadmap&marker=color:blue%7Clabel:S%7CBrooklyn+Bridge+New+York+NY
+def create_map_markers:
+    
 
 
 # In[ ]:
