@@ -231,11 +231,11 @@ payload = {#'zoom': '13',
 payload
 
 
-# In[291]:
+# In[1]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
-print(r.url)
+
 
 
 # In[292]:
@@ -251,8 +251,10 @@ i
 
 # In[ ]:
 
-def create_map_markers:
-    
+def create_map_markers(:
+    s = "|"
+    markers = s.join(markers[0:9])
+    markers
 
 
 # In[ ]:
