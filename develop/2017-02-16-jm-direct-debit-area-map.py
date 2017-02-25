@@ -26,7 +26,7 @@
 # ## Imports
 # 
 
-# In[177]:
+# In[2]:
 
 #Imports first
 
@@ -44,7 +44,7 @@ from io import BytesIO
 
 # ## Convert home address into lat-long
 
-# In[4]:
+# In[3]:
 
 file_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 file_path = file_loc + 'direct_debit_clean.csv'
@@ -53,12 +53,12 @@ ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 df_clean = pd.read_csv(file_path)
 
 
-# In[5]:
+# In[4]:
 
 df_clean.head()
 
 
-# In[38]:
+# In[5]:
 
 # Loop through all of the addresses
 # for row in df_clean.iterrows():
@@ -66,7 +66,7 @@ df_clean.head()
 df_clean.iloc[0]
 
 
-# In[44]:
+# In[6]:
 
 df_clean.iloc[0]['NUMBER'] + df_clean.iloc[0]['STREET'] + df_clean.iloc[0]['CITY'] + df_clean.iloc[0]['REGION'].format()
 
@@ -91,28 +91,28 @@ address
 
 # ## Search for banking services near home
 
-# In[62]:
+# In[7]:
 
-gmaps = googlemaps(api_key)
+
 
 
 # ## Search for banking services near office
 
 # ####  Get API key - stored in file name: gm-config.config
 
-# In[55]:
+# In[8]:
 
 apikey_path = "C:/Users/Jonathan/Google Drive/"
 
 
-# In[91]:
+# In[9]:
 
 with open(apikey_path + 'gm_config.config', 'r') as f:
     api_key = f.readline()
     api_key = api_key.strip()
 
 
-# In[63]:
+# In[10]:
 
 place_type = 'atm'
 near_radius = 1 # in miles
@@ -121,7 +121,7 @@ search_location = ''
 KEY = api_key
 
 
-# In[88]:
+# In[11]:
 
 from googlemaps import googlemaps
 gmaps = googlemaps.Client(key=api_key)
@@ -130,39 +130,39 @@ lat= gmaps.geocode(address)[0]
 lat
 
 
-# In[108]:
+# In[12]:
 
 lat_long = dict([])
 lat['geometry']['location']
 lat_long = {'lat': lat['geometry']['location']['lat'], 'lon':lat['geometry']['location']['lng']}
 
 
-# In[107]:
+# In[13]:
 
 lat_long
 
 
-# In[131]:
+# In[14]:
 
 banking_places = gmaps.places("banking services", location=(38.8921037,-77.0259612), type='atm')
 
 
-# In[132]:
+# In[15]:
 
 banking_places
 
 
-# In[133]:
+# In[16]:
 
 banking_places.keys()
 
 
-# In[117]:
+# In[17]:
 
 print(json.dumps(banking_places['results'], indent=4))
 
 
-# In[287]:
+# In[18]:
 
 markers =[]
 for bank in banking_places['results']:
@@ -170,7 +170,7 @@ for bank in banking_places['results']:
     print([bank['name'], bank['formatted_address']])
 
 
-# In[288]:
+# In[19]:
 
 ##Google maps static API can only place 10 total markers
 
@@ -184,9 +184,9 @@ markers
 
 
 
-# In[289]:
+# In[ ]:
 
-markers
+
 
 
 # In[ ]:
@@ -219,7 +219,7 @@ payload = {#'zoom': '13',
            'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
 
 
-# In[290]:
+# In[22]:
 
 #attempt at all the markers
 payload = {#'zoom': '13',
@@ -228,17 +228,16 @@ payload = {#'zoom': '13',
            'maptype': 'roadmap',
            'markers': markers,
     'key':api_key}
-payload
 
 
-# In[1]:
+# In[23]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
 
 
 
-# In[292]:
+# In[24]:
 
 i = Image.open(BytesIO(r.content))
 i
