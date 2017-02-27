@@ -53,7 +53,7 @@ ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 df_clean = pd.read_csv(file_path)
 
 
-# In[4]:
+# In[102]:
 
 df_clean.head()
 
@@ -77,12 +77,96 @@ address = ' '.join([df_clean.iloc[0]['NUMBER'],df_clean.iloc[0]['STREET'], df_cl
 address
 
 
-# In[ ]:
+# #####  Function to create home address
+
+# In[100]:
+
+# Define function for getting all the needed employee details
+def create_employee_home_address(data_frame, row_num): 
+    home_address = ' '.join([data_frame.iloc[row_num]['NUMBER'],data_frame.iloc[row_num]['STREET'], data_frame.iloc[row_num]['CITY'],data_frame.iloc[row_num]['REGION']])
+    return home_address
 
 
+# In[104]:
+
+# test create_employee_home_address function
+x = create_employee_home_address(df_clean, 0)
+x
+
+
+# ##### Test googlemaps api...
+
+# ####  Get API key - stored in file name: gm-config.config
+
+# In[8]:
+
+# get api key from file - no, github, you can't have my api key
+apikey_path = "C:/Users/Jonathan/Google Drive/"
+with open(apikey_path + 'gm_config.config', 'r') as f:
+    api_key = f.readline()
+    api_key = api_key.strip()
+
+
+# In[115]:
+
+
+gmaps = googlemaps.Client(key=api_key)
+address = 'Constitution Ave NW & 10th St NW, Washington, DC'
+lat= gmaps.geocode(address)[0]
+lat
+
+
+# In[83]:
+
+lat_long = dict([])
+lat['geometry']['location']
+lat_long = (lat['geometry']['location']['lat'], lat['geometry']['location']['lng'])
+
+
+# In[85]:
+
+lat_long
+
+
+# ##### Function to get lat-lon
+
+# In[112]:
+
+# Function to get lat-long as a dictionary from googlemaps api
+
+def convert_address_to_lat_lon(address, api_key):
+    gmaps = googlemaps.Client(key=api_key)
+    lat = gmaps.geocode(address)[0]
+    return (lat['geometry']['location']['lat'], lat['geometry']['location']['lng'])
+    
+
+
+# In[113]:
+
+# Test convert_address_to_lat_lon function
+
+y = convert_address_to_lat_lon(x, api_key)
+y
 
 
 # ## Convert office address into lat-long
+
+# #####  Function to create office address
+
+# In[105]:
+
+# Define function for getting all the needed employee details
+def create_employee_office_address(data_frame, row_num): 
+    office_address = ' '.join([data_frame.iloc[row_num]['OFFICE_NUMBER'],data_frame.iloc[row_num]['OFFICE_STREET'], data_frame.iloc[row_num]['OFFICE_CITY'],data_frame.iloc[row_num]['OFFICE_REGION']])
+    return office_address
+
+
+# In[106]:
+
+# test create_employee_home_address function
+x = create_employee_office_address(df_clean, 0)
+x
+
 
 # In[ ]:
 
@@ -90,27 +174,6 @@ address
 
 
 # ## Search for banking services near home
-
-# In[ ]:
-
-
-
-
-# ## Search for banking services near office
-
-# ####  Get API key - stored in file name: gm-config.config
-
-# In[8]:
-
-apikey_path = "C:/Users/Jonathan/Google Drive/"
-
-
-# In[9]:
-
-with open(apikey_path + 'gm_config.config', 'r') as f:
-    api_key = f.readline()
-    api_key = api_key.strip()
-
 
 # In[10]:
 
@@ -121,33 +184,17 @@ search_location = ''
 KEY = api_key
 
 
-# In[11]:
-
-from googlemaps import googlemaps
-gmaps = googlemaps.Client(key=api_key)
-address = 'Constitution Ave NW & 10th St NW, Washington, DC'
-lat= gmaps.geocode(address)[0]
-lat
+# In[84]:
 
 
-# In[12]:
-
-lat_long = dict([])
-lat['geometry']['location']
-lat_long = {'lat': lat['geometry']['location']['lat'], 'lon':lat['geometry']['location']['lng']}
 
 
-# In[13]:
+# In[128]:
 
-lat_long
-
-
-# In[31]:
-
-banking_places = gmaps.places("banking services", location=(38.8921037,-77.0259612), type='atm', radius=1600)
+banking_places = gmaps.places("banking services", location=lat_long, type='atm', radius=1600)
 
 
-# In[32]:
+# In[126]:
 
 banking_places
 
@@ -162,15 +209,48 @@ banking_places.keys()
 print(json.dumps(banking_places['results'], indent=4))
 
 
-# In[35]:
+# In[137]:
 
 markers =[]
 for bank in banking_places['results']:
     markers.append(bank['formatted_address'])
     print([bank['name'], bank['formatted_address']])
+print(markers)
 
 
-# In[36]:
+# #####  Create function to return banking service locations within 1 mile (1600 meters) of home address; limited to top ten results
+
+# In[157]:
+
+# Define function for getting banking services near home address
+def find_banking_services(query, location, bank_type, radius):
+    banking_places = gmaps.places(query, location=location, type=bank_type, radius=radius)
+    locations =[]
+    for bank in banking_places['results'][0:9]:
+        locations.append([bank['name'], bank['formatted_address']])
+    return locations
+
+
+
+
+# In[158]:
+
+# Test find_banking_services 
+query = 'bank'
+location = x  #home address reference from above
+bank_type = 'atm'
+radius = 1600
+
+z = find_banking_services(query, location, bank_type, radius)
+z
+
+
+# In[155]:
+
+
+
+
+# In[119]:
 
 ##Google maps static API can only place 10 total markers
 
@@ -184,33 +264,27 @@ markers
 
 
 
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
 # In[173]:
 
-import importlib.util
-spec = importlib.util.spec_from_file_location("create_map_markers", 
-                                              "C:/Users/Jonathan/DirectDebit/src/create_map_markers.py")
-foo = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(foo)
+## Test bringing in package -- found a better way using report lab so commented out
 
-m=foo.Map()
+# import importlib.util
+# spec = importlib.util.spec_from_file_location("create_map_markers", 
+#                                               "C:/Users/Jonathan/DirectDebit/src/create_map_markers.py")
+# foo = importlib.util.module_from_spec(spec)
+# spec.loader.exec_module(foo)
+
+# m=foo.Map()
 
 
 # In[175]:
 
-m.add_point(38.8969, -77.02)
+# m.add_point(38.8969, -77.02)
 
 
 # In[240]:
+
+# Use the next payload - is more complete
 
 payload = {#'zoom': '13',
            'size': '400x400', 
@@ -219,7 +293,7 @@ payload = {#'zoom': '13',
            'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
 
 
-# In[58]:
+# In[120]:
 
 #attempt at all the markers
 payload = {#'zoom': '13',
@@ -230,14 +304,14 @@ payload = {#'zoom': '13',
     'key':api_key}
 
 
-# In[59]:
+# In[121]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
 
 
 
-# In[64]:
+# In[122]:
 
 i = Image.open(BytesIO(r.content))
 i = i.convert("RGBA")
@@ -252,7 +326,7 @@ new_img
 
 
 
-# In[46]:
+# In[ ]:
 
 
 
@@ -271,6 +345,26 @@ def create_map_markers(:
 
 
 
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
 # In[53]:
 
 new_img = ImageOps.expand(converted_image,border=2,fill='black')
@@ -283,5 +377,7 @@ new_img
 
 # In[ ]:
 
-print
 
+
+
+# ## Search for banking services near office

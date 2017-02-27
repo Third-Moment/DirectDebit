@@ -11878,7 +11878,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11893,7 +11893,7 @@ div#notebook {
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[102]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12168,15 +12168,60 @@ Name: 0, dtype: object</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Function-to-create-home-address">Function to create home address<a class="anchor-link" href="#Function-to-create-home-address">&#182;</a></h5>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define function for getting all the needed employee details</span>
+<span class="k">def</span> <span class="nf">create_employee_home_address</span><span class="p">(</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">row_num</span><span class="p">):</span> 
+    <span class="n">home_address</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;NUMBER&#39;</span><span class="p">],</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;STREET&#39;</span><span class="p">],</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;CITY&#39;</span><span class="p">],</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;REGION&#39;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">home_address</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test create_employee_home_address function</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">create_employee_home_address</span><span class="p">(</span><span class="n">df_clean</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[104]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;11337 Dewey Road Perrysburg NY&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -12186,51 +12231,7 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Convert-office-address-into-lat-long">Convert office address into lat-long<a class="anchor-link" href="#Convert-office-address-into-lat-long">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Search-for-banking-services-near-home">Search for banking services near home<a class="anchor-link" href="#Search-for-banking-services-near-home">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Search-for-banking-services-near-office">Search for banking services near office<a class="anchor-link" href="#Search-for-banking-services-near-office">&#182;</a></h2>
+<h5 id="Test-googlemaps-api...">Test googlemaps api...<a class="anchor-link" href="#Test-googlemaps-api...">&#182;</a></h5>
 </div>
 </div>
 </div>
@@ -12248,20 +12249,9 @@ Name: 0, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">apikey_path</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Jonathan/Google Drive/&quot;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">apikey_path</span> <span class="o">+</span> <span class="s1">&#39;gm_config.config&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get api key from file - no, github, you can&#39;t have my api key</span>
+<span class="n">apikey_path</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Jonathan/Google Drive/&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">apikey_path</span> <span class="o">+</span> <span class="s1">&#39;gm_config.config&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">api_key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
     <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
@@ -12273,28 +12263,10 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">place_type</span> <span class="o">=</span> <span class="s1">&#39;atm&#39;</span>
-<span class="n">near_radius</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># in miles</span>
-<span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;bank&#39;</span>
-<span class="n">search_location</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="n">api_key</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">googlemaps</span> <span class="k">import</span> <span class="n">googlemaps</span>
-<span class="n">gmaps</span> <span class="o">=</span> <span class="n">googlemaps</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gmaps</span> <span class="o">=</span> <span class="n">googlemaps</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
 <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;Constitution Ave NW &amp; 10th St NW, Washington, DC&#39;</span>
 <span class="n">lat</span><span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">address</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">lat</span>
@@ -12309,7 +12281,7 @@ Name: 0, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[115]:</div>
 
 
 
@@ -12354,12 +12326,12 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat_long</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([])</span>
 <span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-<span class="n">lat_long</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="s1">&#39;lon&#39;</span><span class="p">:</span><span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">]}</span>
+<span class="n">lat_long</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12369,7 +12341,7 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat_long</span>
@@ -12384,12 +12356,12 @@ Name: 0, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[85]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;lat&#39;: 38.892207, &#39;lon&#39;: -77.02646469999999}</pre>
+<pre>(38.892207, -77.02646469999999)</pre>
 </div>
 
 </div>
@@ -12397,13 +12369,28 @@ Name: 0, dtype: object</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Function-to-get-lat-lon">Function to get lat-lon<a class="anchor-link" href="#Function-to-get-lat-lon">&#182;</a></h5>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">banking_places</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">places</span><span class="p">(</span><span class="s2">&quot;banking services&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mf">38.8921037</span><span class="p">,</span><span class="o">-</span><span class="mf">77.0259612</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;atm&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function to get lat-long as a dictionary from googlemaps api</span>
+
+<span class="k">def</span> <span class="nf">convert_address_to_lat_lon</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">api_key</span><span class="p">):</span>
+    <span class="n">gmaps</span> <span class="o">=</span> <span class="n">googlemaps</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">address</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">lat</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">])</span>
+    
 </pre></div>
 
 </div>
@@ -12413,7 +12400,219 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test convert_address_to_lat_lon function</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">convert_address_to_lat_lon</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">api_key</span><span class="p">)</span>
+<span class="n">y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[113]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(42.5077854, -78.6806969)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Convert-office-address-into-lat-long">Convert office address into lat-long<a class="anchor-link" href="#Convert-office-address-into-lat-long">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Function-to-create-office-address">Function to create office address<a class="anchor-link" href="#Function-to-create-office-address">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define function for getting all the needed employee details</span>
+<span class="k">def</span> <span class="nf">create_employee_office_address</span><span class="p">(</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">row_num</span><span class="p">):</span> 
+    <span class="n">office_address</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;OFFICE_NUMBER&#39;</span><span class="p">],</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;OFFICE_STREET&#39;</span><span class="p">],</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;OFFICE_CITY&#39;</span><span class="p">],</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">][</span><span class="s1">&#39;OFFICE_REGION&#39;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">office_address</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test create_employee_home_address function</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">create_employee_office_address</span><span class="p">(</span><span class="n">df_clean</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[106]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;366 West Main Street Concord NY&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Search-for-banking-services-near-home">Search for banking services near home<a class="anchor-link" href="#Search-for-banking-services-near-home">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">place_type</span> <span class="o">=</span> <span class="s1">&#39;atm&#39;</span>
+<span class="n">near_radius</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># in miles</span>
+<span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;bank&#39;</span>
+<span class="n">search_location</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="n">api_key</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[84]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(38.892207, -77.02646469999999)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">banking_places</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">places</span><span class="p">(</span><span class="s2">&quot;banking services&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">lat_long</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;atm&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-128-39341477d833&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>banking_places <span class="ansi-yellow-intense-fg ansi-bold">=</span> gmaps<span class="ansi-yellow-intense-fg ansi-bold">.</span>places<span class="ansi-yellow-intense-fg ansi-bold">(</span> location<span class="ansi-yellow-intense-fg ansi-bold">=</span>lat_long<span class="ansi-yellow-intense-fg ansi-bold">,</span> type<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;atm&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> radius<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">1600</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-fg">c:\users\jonathan\appdata\local\programs\python\python36\lib\site-packages\googlemaps\client.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    335</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> wrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    336</span>         args<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>_extra_params <span class="ansi-yellow-intense-fg ansi-bold">=</span> kwargs<span class="ansi-yellow-intense-fg ansi-bold">.</span>pop<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;extra_params&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">--&gt; 337</span><span class="ansi-red-fg">         </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> func<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    338</span>         <span class="ansi-green-intense-fg ansi-bold">del</span> args<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>_extra_params
+<span class="ansi-green-intense-fg ansi-bold">    339</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> result
+
+<span class="ansi-red-fg">TypeError</span>: places() missing 1 required positional argument: &#39;query&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[126]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">banking_places</span>
@@ -12428,7 +12627,7 @@ Name: 0, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[126]:</div>
 
 
 
@@ -12447,11 +12646,35 @@ Name: 0, dtype: object</pre>
     &#39;weekday_text&#39;: []},
    &#39;photos&#39;: [{&#39;height&#39;: 600,
      &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/114923049409822236256/photos&#34;&gt;SunTrust Bank&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAAB5rUAzD0OsaEQecU1u6rscNNe-azlwVuWY7wkIc84umovfczyyv1tn6UArbli6yT7YIe8N61RwKZxtAy90B3qx098l5tUdYKeg4EoMjxImfFSpnDVwrxHo4nPBjueeKL6lUWSz4KUtfBOnv-8QzS_qt3mNxsgiejfO5NQuzqQJzEhCKg341bDAJgHFlYo2l8frWGhT4c8yYmNnZ8EHx45fOkgenkzusaw&#39;,
+     &#39;photo_reference&#39;: &#39;CoQBdwAAADLO21n6ujTFMW9fw2taU2dgI5dKuZAlOTnisz4RbK3LjPfQezl_M-kz5wdTSqaKEMg4eM3dq_NTMxhTqVQV3D7zJaRvq5DtPhikYJ1fc5JWJ-cJfhDbR21Y7dVMaxs6SOIaR0mFd0nGGYzWKfkkp8ha6BCMEMCX7d6KWbWtNnsUEhB-ApRigbW2flgg1X_o9qNcGhSSKAeyqZCvHuopYYLyO73rEgJ6kg&#39;,
      &#39;width&#39;: 600}],
    &#39;place_id&#39;: &#39;ChIJSzqG0ne3t4kRugwknK_S-0c&#39;,
    &#39;rating&#39;: 3.5,
-   &#39;reference&#39;: &#39;CmRRAAAAnoR8j30tnXguVcWl8Fc6M12u2WQVXlxqy-mNvmOIDtflxOCO5EEJWvFN0hUsK46PedZqOgcECbOCcupxMVMKsRB-2kq0fJHjUaf-tofNvQQrOoHc0CTU3F03P7qZJxEUEhBX52e885_leLUIXj4OSAqvGhSO3cYZR0Gov0N0yiYmtVc3jJcZiA&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAAw8oAadrkB9crxSYZwKLQBRZX3p-BHwuPxOK3HWq89wH_J8MpEmxuIk3ln51lN0qO2o3BV2g6DV_fv3Ta-mqs_D2m9XMcLM2kb2c_Ia-05HUCmx4id5q32qroffIzEPegEhBpU-QkztGreQ1UpeMwO1svGhTD9cCdHA8PeiN79jH-V9ruvRTWug&#39;,
+   &#39;types&#39;: [&#39;bank&#39;,
+    &#39;atm&#39;,
+    &#39;insurance_agency&#39;,
+    &#39;finance&#39;,
+    &#39;point_of_interest&#39;,
+    &#39;establishment&#39;]},
+  {&#39;formatted_address&#39;: &#39;1445 New York Ave NW, Washington, DC 20005, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.899287, &#39;lng&#39;: -77.0331276},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9004903302915,
+      &#39;lng&#39;: -77.0318503197085},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.8977923697085, &#39;lng&#39;: -77.0345482802915}}},
+   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png&#39;,
+   &#39;id&#39;: &#39;74ae7de51d5619678ee3420e90bf33d6b7309d3f&#39;,
+   &#39;name&#39;: &#39;SunTrust Bank&#39;,
+   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
+    &#39;open_now&#39;: False,
+    &#39;weekday_text&#39;: []},
+   &#39;photos&#39;: [{&#39;height&#39;: 2429,
+     &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/102597671217061272428/photos&#34;&gt;Ray Chen&lt;/a&gt;&#39;],
+     &#39;photo_reference&#39;: &#39;CoQBdwAAAHeegtCvTVFDnFdJ3ELobw0Wj1JybUwZgBXCUuHy9HGFitN2x6TXneKcM8rv-XcKaowOxvPfJuSnrrkAIaT3KyBUvTf4IKhK4l7NCg3z88LxBpPhQTXw7LjnBAemwIngP9N93aAmUu4B6qW2SREz1DYihzXGg7wvMUAjdkQ1jR1gEhDwOy_vzbGCd9a1zEv3JXZCGhQWMfzDdWNnzZVs8_tKRFHaZiLYAw&#39;,
+     &#39;width&#39;: 3641}],
+   &#39;place_id&#39;: &#39;ChIJ19rcJpa3t4kRjYgJpj3X18Q&#39;,
+   &#39;rating&#39;: 4.6,
+   &#39;reference&#39;: &#39;CmRSAAAA5N4L2ynK1Y9D92-r62UJnYojspkDAPyxsw3NhZUXzLeK-DHh4xpObINbnbM9vQ9J29K3WCh2Xv-PBbWo9_Ttzh_ubSHVaISx8-8ByRnTpOdTlFgAGBXPUE-4P1Pd_oOZEhBPY4te9RLS_ec6DhatcFS_GhSzGvN6d_7DHcUjtuKYLkaZyCVXXA&#39;,
    &#39;types&#39;: [&#39;bank&#39;,
     &#39;atm&#39;,
     &#39;insurance_agency&#39;,
@@ -12470,56 +12693,8 @@ Name: 0, dtype: object</pre>
     &#39;open_now&#39;: False,
     &#39;weekday_text&#39;: []},
    &#39;place_id&#39;: &#39;ChIJublWMZe3t4kR8l5JWBZXSxI&#39;,
-   &#39;reference&#39;: &#39;CmRRAAAAWuIuM2MoGl_eRzS7_yAsAGOT7AVcOM8s6AkGZF4k_IqHvziRfdzyUdVSRXzAF3Ly5ipsQZlvi6MBBP2P0zKtGxBj4BzuF9p2dHDd4Dn9RBrvFmV1W-hThzS1OdcaIizAEhDsvmghIpIKolWL3WmIEDdDGhTHJ6GM9RNMmxEOWLGXVCKIZjCI1A&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAATG_M4xFZYYJmiluRTUNlVpde8sLHpPYjpzUHhJGLhLfQSTc15jGN68kbv4frMm-G5hqaj-QezoohoowwZn6xZhHdbWcDHnEkH5tOZoOMM9-j-UlOqV9vFJSVJsVShwtmEhDKk-V7ReLe3R-1wZ-LqX83GhQbHjviAtbHkWjDF_NrCVg2cjbkdQ&#39;,
    &#39;types&#39;: [&#39;bank&#39;, &#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
-  {&#39;formatted_address&#39;: &#39;1445 New York Ave NW, Washington, DC 20005, United States&#39;,
-   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.899287, &#39;lng&#39;: -77.0331276},
-    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9004903302915,
-      &#39;lng&#39;: -77.0318503197085},
-     &#39;southwest&#39;: {&#39;lat&#39;: 38.8977923697085, &#39;lng&#39;: -77.0345482802915}}},
-   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png&#39;,
-   &#39;id&#39;: &#39;74ae7de51d5619678ee3420e90bf33d6b7309d3f&#39;,
-   &#39;name&#39;: &#39;SunTrust Bank&#39;,
-   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
-    &#39;open_now&#39;: False,
-    &#39;weekday_text&#39;: []},
-   &#39;photos&#39;: [{&#39;height&#39;: 2429,
-     &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/102597671217061272428/photos&#34;&gt;Ray Chen&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAADZx0G02in63dad_v0Sv5GNLbwAg676e59Mx4IvPSAStSWC6mTAbihO216A8luBv647RM3fAuO-FOtHEJs_3jWst_py-TxCDXIM38Bt55zdL8EPx6f6WXSzD9UOlDxatoVuOy2KTzlBN9STheTnHvLrqmdxoYJWPSIzoU46CABEwEhArj7y9w3cu2wrXuIdoq49hGhQQMKvpkTwkS0TplWW6O0zP4Y3q3Q&#39;,
-     &#39;width&#39;: 3641}],
-   &#39;place_id&#39;: &#39;ChIJ19rcJpa3t4kRjYgJpj3X18Q&#39;,
-   &#39;rating&#39;: 4.6,
-   &#39;reference&#39;: &#39;CmRSAAAA8AzRwm0P5u0oIXdvpeQkUaFsykkY832aLvE12Gv48gEepxkHpBJgJQeZUsN6mjA4BYfObiIs8iwmgC3BFtRPUk3tW5HGRvgJa7aeKJYJWqEAN0kG3pp7LmqTnnY3CVRLEhBBewDcTvQde57jIsLtrFNdGhT5as5XR3fxzhikW5ek01y4FI9zxw&#39;,
-   &#39;types&#39;: [&#39;bank&#39;,
-    &#39;atm&#39;,
-    &#39;insurance_agency&#39;,
-    &#39;finance&#39;,
-    &#39;point_of_interest&#39;,
-    &#39;establishment&#39;]},
-  {&#39;formatted_address&#39;: &#39;2 Massachusetts Ave NW, Washington, DC 20001, United States&#39;,
-   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.89752499999999, &#39;lng&#39;: -77.009914},
-    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.8988618302915,
-      &#39;lng&#39;: -77.00841181970848},
-     &#39;southwest&#39;: {&#39;lat&#39;: 38.8961638697085, &#39;lng&#39;: -77.0111097802915}}},
-   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png&#39;,
-   &#39;id&#39;: &#39;7f7fc230d625a20e0b51341ce8e2d30a9d80d1b4&#39;,
-   &#39;name&#39;: &#39;SunTrust Bank&#39;,
-   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
-    &#39;open_now&#39;: False,
-    &#39;weekday_text&#39;: []},
-   &#39;photos&#39;: [{&#39;height&#39;: 1152,
-     &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/102563302884185809682/photos&#34;&gt;Dan R. Mills&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAAECD9rtops88OBMIpMG_i0ccz2S_RWR81ETuhTgSjYXySAHs70MtqOmGTZSY4njm2_5x5A4xAIj10hSMGkdEyrRN0qzVvPg7M_nGxf945yQ9f8PduCZKwzI0RixQCDc9BIfUYb3Un-_2epaZvzWcCbLUVII1I65PuouZlfE3JlpiEhCFpvyt0L0HbIYR9CwhEEfDGhQU1xuc3RDDkUBTQSejQtKu_sUlLg&#39;,
-     &#39;width&#39;: 2048}],
-   &#39;place_id&#39;: &#39;ChIJIZvRUSe4t4kROtYY610MpvI&#39;,
-   &#39;rating&#39;: 4,
-   &#39;reference&#39;: &#39;CmRSAAAAyXUEk8L500VNgOCbheG9CahUSpl-OnMhFtcBaCovbwl0pu3jRW9Fk8vdum-_1tTHyQSEtld9IcZs9gWs0gZkkC89goj7az2vAnHTnIWeUmsRll3CGLPJTSAKJbXm7yQTEhD_vygbTF-2IoKJkAJDU3gkGhTvNODhbwIi7u_IwXLDsyz3mKr_cA&#39;,
-   &#39;types&#39;: [&#39;bank&#39;,
-    &#39;atm&#39;,
-    &#39;insurance_agency&#39;,
-    &#39;finance&#39;,
-    &#39;point_of_interest&#39;,
-    &#39;establishment&#39;]},
   {&#39;formatted_address&#39;: &#39;1100 G St NW, Washington, DC 20005, United States&#39;,
    &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.89814030000001, &#39;lng&#39;: -77.0272517},
     &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.8995764302915,
@@ -12533,11 +12708,35 @@ Name: 0, dtype: object</pre>
     &#39;weekday_text&#39;: []},
    &#39;photos&#39;: [{&#39;height&#39;: 2988,
      &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/107331535121516232959/photos&#34;&gt;Jeremy Gordon&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAACQGYyizCMb2NLaPhukWXJipO98jNB2koqFeZHR97U3Si6ViuQF05mUVWgoVhjGW2OTHk6IGcPYqrnpPR7up7s7z0Z9s-Dz5OrTCbsPcyBOOtadYgsgaJ6yjl6IJN-5QTwRZKoPPyxIp93UiCVa6qMtkKwSUgXQFb--j13mTgmVyEhBQPxMiUxZHlo-eCq1inP6hGhQVqekLPCiZAKZWGK-OBgiUImxtPw&#39;,
+     &#39;photo_reference&#39;: &#39;CoQBdwAAADG64dkcIW46VWsEINWY4eC7E9AqvIhP5gdBfQhxyKndBAqRJVqmyrNWPN6BrEIj_DAYuDFaj9Piu9QpOuKz5D5HrPF_L7NHTVjCEeLjBR4q3godIL-Er-QwDJKP13Fv88SXEz0aagRQ_ZrrYd_Bgu2QKrbz53JDalk--xnW0ZXYEhBrxriqJBFRmIcvdm4dfZJNGhSpStMFUNfomAe9xYI-SMYDb20HqQ&#39;,
      &#39;width&#39;: 5312}],
    &#39;place_id&#39;: &#39;ChIJseRrMJG3t4kReTNV_AcfLNc&#39;,
    &#39;rating&#39;: 4.5,
-   &#39;reference&#39;: &#39;CmRSAAAAz2ldiO9V5Nk7cgmKdCJagYhAcR9Ty-DfFmwV4Bldh8XZwm-AyIw96r78oJAONwTGABDl7RhUF-i6WBskiYsgjgH6qNYEAmt-yyW0Z0dfXmlXcvUgCJ2ys3stqiuzPl2nEhB3BokMXahKLU1c9GYq9aArGhSGqZsSgGTJCaFalL_X_bK07hv9BA&#39;,
+   &#39;reference&#39;: &#39;CmRSAAAA_aw4v9ngcEZWxC-QF9spYD9DWQLh3nq-oz7yGhw0sWggL-92HwpFB6qiF_NaT4t6C-nIBTRSJtWExlr4C4H-39nvDrWqSjvfD2mCS9dx_sGNtM3a2zgEGcJJX7g16sjKEhD4stD4WTGMPfae3pVtH0SjGhQL04Wv2iNaCBW-tmOJzSVWow9MCg&#39;,
+   &#39;types&#39;: [&#39;bank&#39;,
+    &#39;atm&#39;,
+    &#39;insurance_agency&#39;,
+    &#39;finance&#39;,
+    &#39;point_of_interest&#39;,
+    &#39;establishment&#39;]},
+  {&#39;formatted_address&#39;: &#39;900 17th St NW, Washington, DC 20006, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.9014923, &#39;lng&#39;: -77.0395915},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9028579802915,
+      &#39;lng&#39;: -77.03819696970848},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.90016001970851, &#39;lng&#39;: -77.0408949302915}}},
+   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png&#39;,
+   &#39;id&#39;: &#39;c4920de7e13b221f437bb687283e7f06a82ab6cd&#39;,
+   &#39;name&#39;: &#39;SunTrust Bank&#39;,
+   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
+    &#39;open_now&#39;: False,
+    &#39;weekday_text&#39;: []},
+   &#39;photos&#39;: [{&#39;height&#39;: 2992,
+     &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/115546972549135964161/photos&#34;&gt;Joel Hang&lt;/a&gt;&#39;],
+     &#39;photo_reference&#39;: &#39;CoQBdwAAABNl5F27p2xcyRze_pda4eI6pTNMi_hk0ToYI2zCD9JvTOlky_lL_9RHnGVacw6jJieYmIVZFxGYOKPk4tRb-nTCGX2ar0cpOmxPSYUsvWQvFCyRYQrefqFP1qQG0ouFpVTCLOIafBH3mgLaeKN2K21WG5W87bNGMH3-2Hc1dicTEhA83CIEJWZHuu5d4-WK0aNhGhR0QhNjxojW89TTWrh1NhTJYjWEfQ&#39;,
+     &#39;width&#39;: 4000}],
+   &#39;place_id&#39;: &#39;ChIJ5-piVrm3t4kRDbfQTKX-vZ8&#39;,
+   &#39;rating&#39;: 3.2,
+   &#39;reference&#39;: &#39;CmRSAAAAAKoOrCGMwhpp5KNx_Hvh69cMqH0kyfyt6e-aeH_SK8YY5m0b79Xzg9Me3Yo0opa3G_9GY0NVmDFfTCADy5YURf0aVnKDWvSvuS9_Vj6E7SwjrisIm-RTzMmgia2OGOZhEhCdyYhBBYqZDXtoo_8Y79zgGhR8MufnYhsTqDnEqUevVQJ3sgoPOg&#39;,
    &#39;types&#39;: [&#39;bank&#39;,
     &#39;atm&#39;,
     &#39;insurance_agency&#39;,
@@ -12557,10 +12756,10 @@ Name: 0, dtype: object</pre>
     &#39;weekday_text&#39;: []},
    &#39;photos&#39;: [{&#39;height&#39;: 600,
      &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/112380900845320928277/photos&#34;&gt;SunTrust Bank&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAAA186pgPhdVww_8zXjivHvDxrYfBklnfnm2rOK2mD1K_a8SpmPmoeARM2g3naOhuE3gpZ4ugqrpN-CpHQADJKiADG03zyX_D8-WchyTHzOPvzDZR2DNmgkvKAuaMnuQ188GD3ch2_sxLCrT7iURIo9XpXua3oXmXhLNi4HWnqDBdEhCSicvZ0CFz9M5XpQi_Y9agGhQl3_xVUPcSHBoUpl5z9fKZJQmXrg&#39;,
+     &#39;photo_reference&#39;: &#39;CoQBdwAAAAwfv7TPvQygnkR1tkA_j4LASUCc5qFqD0xeeZdglDhfSp4BO0qDP8LEb4HxWeX72TDJVPgnLvbdsWxlusc1trKN_0kgS0JaySt16mO7ExzFARNuOdtvj8IoH9dwrAF1XGDFujNd3uOgN2fi0tMmOslcM7yHbcUz7A-VxGQGGzPrEhB69DO16aV1GiGlJTkVWGAMGhTUKoeTtP3M4MwzqdV7-9xyJANS6w&#39;,
      &#39;width&#39;: 600}],
    &#39;place_id&#39;: &#39;ChIJseRrMJG3t4kRjtgjaOI9dRU&#39;,
-   &#39;reference&#39;: &#39;CmRRAAAANacroPCMpnt0ABv_TOGoCi5UF6M97CVqFcPKG1DvbEAaLOYH5Hso6_-BNFhL1GtebQGkeIjq_BAZbqH42cJI26Fl8ChMv1Vv58d6j_nnJ7154pX25COzYLsUQcAc2xhaEhD-UoN7DnQPr4vif--Mye8MGhS3E9Ox790rWxuk757tUeXiF4vwdQ&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAAvdEqVChFyFMQYt_LQIzvH71CpsSiHcL6c5RIV7W-aiR9ucCa5yfA-o2CUR9Xci10yYGxo54T3HxVqrGCvR5AROyxkZYWsVjVnY09k6-iXwiLp2iObOf_aF1ru0D7qUKPEhANJ-7ssb88cpyTtf7JbLGVGhQ9xPN4wU_E9C5qK3vSfSG8P-V1xA&#39;,
    &#39;types&#39;: [&#39;bank&#39;,
     &#39;atm&#39;,
     &#39;insurance_agency&#39;,
@@ -12579,7 +12778,7 @@ Name: 0, dtype: object</pre>
     &#39;open_now&#39;: False,
     &#39;weekday_text&#39;: []},
    &#39;place_id&#39;: &#39;ChIJWdQfub63t4kRnlswNFhtSYA&#39;,
-   &#39;reference&#39;: &#39;CmRSAAAAw4MhbUcTscUyC-QbvH2kCyig52vykhkGMBEKfJfccjac_LoC8yXSDUXhq8UMY6As1Oxsd3eV37oWVBEBOQCHZmz_oQiN7sSGxLk6Uaeo9sWscQXkPkZl2u6OsixsblSmEhBUTSvjF0OEsUx3gX_JZk9_GhR9igol19Lhj_vjhEcsDykaO_WaHw&#39;,
+   &#39;reference&#39;: &#39;CmRSAAAAvLq0vX1T4M7RDfe6JdxWKAXlhr4JxxOeXzHWwupzM9u4PyRrAGH7K_ZpyrTZ1z2duDKwP2CDCF7l6ms2CcqsEtWyYeiOjdme2MMokLsJAoEtkACfxX4GfbNGOq-3IYrrEhAp_bxgjdzxNsu6pKvqOax0GhRpfUwRWwH4JPS6zjk2m5h78YAltA&#39;,
    &#39;types&#39;: [&#39;bank&#39;, &#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
   {&#39;formatted_address&#39;: &#39;1899 L St NW, Washington, DC 20036, United States&#39;,
    &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.9039247, &#39;lng&#39;: -77.04312190000002},
@@ -12594,22 +12793,64 @@ Name: 0, dtype: object</pre>
     &#39;weekday_text&#39;: []},
    &#39;photos&#39;: [{&#39;height&#39;: 4032,
      &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/112043958434480433452/photos&#34;&gt;Joe Nastri&lt;/a&gt;&#39;],
-     &#39;photo_reference&#39;: &#39;CoQBdwAAAO1dpU6qS9Oy7qLX52ofi1iWPykFOI6cLKYxcFUbgjwCHc7XlY84VHozRj2NMeTVq28HuvNnB7KwigGcdA8uM4EGGA2AsiWR366QY0G2wmvQf7FEVWumJViJvFQPu5atXRhERdyv5efO_Of_b55fbvwrFOzsI0IP26f8gjS5OwdsEhDc_s6HFxYRefCLANuKtp9hGhQXDVXaDvIEXdbQx1wMnjpfz7G5Cw&#39;,
+     &#39;photo_reference&#39;: &#39;CoQBdwAAAJoZiZXDiJEwgK41OQ_5tFznNGwwHkWrmK0JzyeVyVzoxMBLbcE3aGVEKHA5jPJA11AH9B_X8x0eklNhTWLzm8P8WDB3vSe_q8-QEci7Hrr0XKFs5ai-lg5mHjtx6Iwb3fu8TkONR4PBoO7yejrFy3karCferiYuWaRiutgcSFEUEhAirYWx9AHLI4RrEib8shBHGhRa8fPm37E_4MpVdQ4jAki5FurdQQ&#39;,
      &#39;width&#39;: 3024}],
    &#39;place_id&#39;: &#39;ChIJs9Ns2pW3t4kRMuHVPMl0Lj0&#39;,
    &#39;rating&#39;: 3,
-   &#39;reference&#39;: &#39;CmRRAAAAS_a_jU7fS6AjjnpH68iQJjBhCPZ7xQwP3q7t8cjRiOMEFSkERCcyRCohoOgKrcxNhnTu6Yoqvw8kRI1lJCuYJ7OQEMOEYY5p_vlxJYp1xIkejktLR8y_mnx9vL6O_Zc-EhDwuzfZFcryU_QHTzYT5NnmGhRxLQ-sdZdZjGDYvagr5OLoAj13zw&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAATj5chI3o2JAmK184r0hoXUeSICzYtG4NG3YZznSXxPHk4dZGDm1lOp1I7Y2ZsFPjSePwUWcMcz2ry9Py0a39B-bXR5Ju-RJ88oIttkQk5OywVuOX_BiBs5C2nqKPP37JEhBMh9dPzvne--zTmlKKcWcrGhQERcLSgAioH45YgOpAbk8BszuCCQ&#39;,
    &#39;types&#39;: [&#39;bank&#39;, &#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
-  {&#39;formatted_address&#39;: &#39;888 First St NE, Washington, DC 20002, United States&#39;,
-   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.901546, &#39;lng&#39;: -77.007041},
-    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9027410802915,
-      &#39;lng&#39;: -77.00531551970849},
-     &#39;southwest&#39;: {&#39;lat&#39;: 38.9000431197085, &#39;lng&#39;: -77.00801348029151}}},
+  {&#39;formatted_address&#39;: &#39;2 Massachusetts Ave NW, Washington, DC 20001, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.89752499999999, &#39;lng&#39;: -77.009914},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.8988618302915,
+      &#39;lng&#39;: -77.00841181970848},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.8961638697085, &#39;lng&#39;: -77.0111097802915}}},
+   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png&#39;,
+   &#39;id&#39;: &#39;7f7fc230d625a20e0b51341ce8e2d30a9d80d1b4&#39;,
+   &#39;name&#39;: &#39;SunTrust Bank&#39;,
+   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
+    &#39;open_now&#39;: False,
+    &#39;weekday_text&#39;: []},
+   &#39;photos&#39;: [{&#39;height&#39;: 1152,
+     &#39;html_attributions&#39;: [&#39;&lt;a href=&#34;https://maps.google.com/maps/contrib/102563302884185809682/photos&#34;&gt;Dan R. Mills&lt;/a&gt;&#39;],
+     &#39;photo_reference&#39;: &#39;CoQBdwAAALehkciY07j-7UAsRsIIhbA8n0mw9TdRSPpMnCDUOY4sbxAHmv6AhN-ALYlszwRd-8xFDO5K1raqoFyXKdyxF7Mlnl7B2Tva4B3q07GZrzhMT63yrt0K5AoyjRJJzF54Lo2qtBnXBEfCVjVI1cVvwjSHmLCNxDbgu3bjs9DbGBmHEhDa2Q5ja93IZrrWkGJKdr38GhTn0bJW_03Ab0KWkHB8AKMtKJpiIw&#39;,
+     &#39;width&#39;: 2048}],
+   &#39;place_id&#39;: &#39;ChIJIZvRUSe4t4kROtYY610MpvI&#39;,
+   &#39;rating&#39;: 4,
+   &#39;reference&#39;: &#39;CmRSAAAAwTMYaj4IatfkGztJYdGT5_HMWJAawPPHL7EsDt4gwEkSX0aLA4xlQsqAYCq7Qspz_3PoPXITMSmXRP2jaGCBi81uJWbg4S1SxWIT9HeBaa8lernKnn38P13QQbtGi7-jEhC4YZOCpmZ2YFaLx22WZnGqGhTJLaARzHi5QDOQCQxApYqBIYyAZQ&#39;,
+   &#39;types&#39;: [&#39;bank&#39;,
+    &#39;atm&#39;,
+    &#39;insurance_agency&#39;,
+    &#39;finance&#39;,
+    &#39;point_of_interest&#39;,
+    &#39;establishment&#39;]},
+  {&#39;formatted_address&#39;: &#39;500 12th St SW, Washington, DC 20024, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.8841166, &#39;lng&#39;: -77.0274524},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.88545973029149,
+      &#39;lng&#39;: -77.02642826970849},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.88276176970849, &#39;lng&#39;: -77.02912623029151}}},
    &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png&#39;,
-   &#39;id&#39;: &#39;63d62018dea2ed09258c8324c7d7cc328ee91d5c&#39;,
-   &#39;name&#39;: &#39;Hew Federal Credit Union&#39;,
-   &#39;place_id&#39;: &#39;ChIJrYf4viG4t4kROhz70x9Kwhc&#39;,
-   &#39;reference&#39;: &#39;CmRRAAAAotZwX01SO0giIQkRqhL1abbZffsIIXxdZEAg9obsqtrrEL_NZxCTXI9al-B0GkbczUS8M2G91Ynkl8EMw6hqRe8pA7jOSw2ioc5iPi8Y6geX2XACXB9k2oPokqPES06AEhCipV2GqZCi4Jj31jtyPfnqGhSA0we_1n1UNZ0XPPnvF51UI4Z0PQ&#39;,
+   &#39;id&#39;: &#39;511555720c9b05df1908608576136c1a77e7edae&#39;,
+   &#39;name&#39;: &#39;Justice Federal Credit Union&#39;,
+   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
+    &#39;open_now&#39;: False,
+    &#39;weekday_text&#39;: []},
+   &#39;place_id&#39;: &#39;ChIJ7xpReJ23t4kR8WZiPhJCz_o&#39;,
+   &#39;reference&#39;: &#39;CmRSAAAA3WKJrAnQVSdtJr8kWf-TZswQNJOLhhiI_D4kMgpGTheEiY4pyHqkf-NMp5VIt2RHQ7MSg6NyTNJBWpzgVWQT5hWe7nj6SqxH3tysrK-oaMHtCpZaqrz28ULXJeBAhPDHEhBvaZIi2xLhasQ_-PLAYbqDGhQVbvhffUYnUAfk8OBGNaj7_My8Kw&#39;,
+   &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
+  {&#39;formatted_address&#39;: &#39;732 North Capitol St NW, Washington, DC 20401, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.8998436, &#39;lng&#39;: -77.0095504},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9011933802915,
+      &#39;lng&#39;: -77.0079893697085},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.8984954197085, &#39;lng&#39;: -77.0106873302915}}},
+   &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png&#39;,
+   &#39;id&#39;: &#39;8bc2d958bafc51f8c8f1b2c0455b3681ffaf1002&#39;,
+   &#39;name&#39;: &#39;Government Printing Office Federal Credit Union&#39;,
+   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
+    &#39;open_now&#39;: False,
+    &#39;weekday_text&#39;: []},
+   &#39;place_id&#39;: &#39;ChIJMTx6viC4t4kRNbZe1WPPcwY&#39;,
+   &#39;rating&#39;: 5,
+   &#39;reference&#39;: &#39;CmRRAAAATR0GMJXXkUv-wA97VRVtOz8UZDgTtjMpkHo9wA8Y5nFmuid-yy8fwB2_5sTho2racMIGmWu_p5KFIE1qwMV3PGPhMJQdPxYgUPUMdXoSxG-uxQRDtcf2t8AliYVHTk07EhCh6btTDSWeqFNBxwIBEqPHGhSdBVJANe9_Qv4whsdleysCxljd-Q&#39;,
    &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
   {&#39;formatted_address&#39;: &#39;1201 New York Ave NW, Washington, DC 20005, United States&#39;,
    &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.90098100000001, &#39;lng&#39;: -77.028582},
@@ -12623,7 +12864,7 @@ Name: 0, dtype: object</pre>
     &#39;open_now&#39;: False,
     &#39;weekday_text&#39;: []},
    &#39;place_id&#39;: &#39;ChIJQ3WGEJS3t4kRuT9vVfZirqg&#39;,
-   &#39;reference&#39;: &#39;CmRSAAAA0LKADzev3KoJr3JriZKXKEqz9t6tG3_1qiAHl-9PPoBhglbPMU_IWu9DvbyY8PqohhC8k4DQwONh73PbyTS1mhfEZq92Qpts8QAcxMan2hFv41R1JLmXHCxP1lDOBcoQEhA244Gbm9RGrEm_BCivogI5GhSiKRDtJg6FuDW7ONw4FSU2LkyuXA&#39;,
+   &#39;reference&#39;: &#39;CmRSAAAAyp0V-Bjnsa8pulcudxjSoj_DancyJJV9f9bVGgyhg_CAIibsqxtRJwkTBP1drMH6XSqjJC6hM0kHhvF42vhiT2aHd6hF-7oGNsT1GN5tcNyTfiTQwWlObuPnb3q6jSkrEhCvCBgrHfKge1CCeAvARmArGhRMux7TQ2a37YH7g3U92gdc6ysbUQ&#39;,
    &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
   {&#39;formatted_address&#39;: &#39;1775 Pennsylvania Ave NW, Washington, DC 20006, United States&#39;,
    &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.9000361, &#39;lng&#39;: -77.0414018},
@@ -12638,7 +12879,7 @@ Name: 0, dtype: object</pre>
     &#39;weekday_text&#39;: []},
    &#39;place_id&#39;: &#39;ChIJc9Dmttgld0ARVTsPv8zHkMc&#39;,
    &#39;rating&#39;: 3,
-   &#39;reference&#39;: &#39;CmRSAAAATU0xxRlvH8oDhWQmzr-SkyN2-A6Yw_EUt3Fz1T2cB9xKsMsAulXXujxl5mQarfq0FUzYueZcQbONHxJw8EU7JXJcDOa-O8HqlnxrF0EQ5tdJx83AEb0XDu_ehyeXHKEjEhAyZMCRrq6S0q10FP0k5KWhGhQyOOpT2r2htuL7FV0YF3QRioSxcQ&#39;,
+   &#39;reference&#39;: &#39;CmRSAAAA-OcfLVhUm2KuPqjMjsrGHR5TTfOtC6IllgzWXEQBWbk1sVfvDnCfsYM8ZlwW_yMyAZSK62LDMjA3fjvhnQlLDIIa8qSD4aQ-j3uZ-ft2kSVWWyMninTosE1y0Yb0aQIKEhCNgcMwO1yhHQP73lCFNddqGhSnDtO_E7GmBIduF7ZB-ZgzH8PdSA&#39;,
    &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
   {&#39;formatted_address&#39;: &#39;200 Independence Ave SW, Washington, DC 20201, United States&#39;,
    &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.88664410000001, &#39;lng&#39;: -77.0144069},
@@ -12650,21 +12891,18 @@ Name: 0, dtype: object</pre>
    &#39;name&#39;: &#39;Hew Federal&#39;,
    &#39;place_id&#39;: &#39;ChIJ17hAEoG3t4kR74b5grZphFY&#39;,
    &#39;rating&#39;: 1,
-   &#39;reference&#39;: &#39;CmRRAAAAr7LXvtZhyr4p64eXBkRLvnUyr8UGNn-tWciw6R0yaNeVsgHE8qzpMxpBktHlz89hIXEMfzsPBUoBCwRtldgh3SONy28XUSiwoS2pXawWHgonk7qHyZJlDj1I8HF5zEfuEhDGRrNA7sD25BiwQfh4tF2oGhSBYTrKQ1rf2l015ej0vQ4dHnQ5LQ&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAAWx_OCww__ngUjCbLsUomTK3wNtnHcO30CCFNFsSFhGSy5fdtVkiNG7eBe9jX-wmRC7azO7QroaQvruO0nKACNtFHsVBtBfThxOjgzSGm_KOnVoETSQGYRgXb8xxM82TPEhDIu5oS0ZI853EBd3LV_GhXGhTY9Q26qtD6445gYSv4sI_G4bgQFQ&#39;,
    &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]},
-  {&#39;formatted_address&#39;: &#39;500 12th St SW, Washington, DC 20024, United States&#39;,
-   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.8841166, &#39;lng&#39;: -77.0274524},
-    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.88545973029149,
-      &#39;lng&#39;: -77.02642826970849},
-     &#39;southwest&#39;: {&#39;lat&#39;: 38.88276176970849, &#39;lng&#39;: -77.02912623029151}}},
+  {&#39;formatted_address&#39;: &#39;888 First St NE, Washington, DC 20002, United States&#39;,
+   &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 38.901546, &#39;lng&#39;: -77.007041},
+    &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 38.9027410802915,
+      &#39;lng&#39;: -77.00531551970849},
+     &#39;southwest&#39;: {&#39;lat&#39;: 38.9000431197085, &#39;lng&#39;: -77.00801348029151}}},
    &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png&#39;,
-   &#39;id&#39;: &#39;511555720c9b05df1908608576136c1a77e7edae&#39;,
-   &#39;name&#39;: &#39;Justice Federal Credit Union&#39;,
-   &#39;opening_hours&#39;: {&#39;exceptional_date&#39;: [],
-    &#39;open_now&#39;: False,
-    &#39;weekday_text&#39;: []},
-   &#39;place_id&#39;: &#39;ChIJ7xpReJ23t4kR8WZiPhJCz_o&#39;,
-   &#39;reference&#39;: &#39;CmRSAAAA9TxDnGK4_HN4vfQimLJ4T4XuckaGu-mEWqPeQqbszxcrkxWnwr3a1Ossap4d7yRE3wpFZk3pxyZdhEkFBe2Q2KyeZDyh5emSA3yZxSKaecYufPGeYNcZqRtMU_oNS07PEhCV2b5VnvqOY8F1VSIWeXYlGhRgxqK_ZqX_FbTb2Ieh0xiMxW8SEw&#39;,
+   &#39;id&#39;: &#39;63d62018dea2ed09258c8324c7d7cc328ee91d5c&#39;,
+   &#39;name&#39;: &#39;Hew Federal Credit Union&#39;,
+   &#39;place_id&#39;: &#39;ChIJrYf4viG4t4kROhz70x9Kwhc&#39;,
+   &#39;reference&#39;: &#39;CmRRAAAAC7SZLItqu6Hz0yNsSQ1na4qPsjNtJpxhVG2Oijb3G7sV10GKNJW1YlzICFhHHU0YGydZjmeVH_IUMKGGzoW0hKDhPrfm3w_S-ef-oWe3042WuyzulEaVmNq_36uF28_KEhAlLf6gjtUkdmhL7aeXhtG0GhRSd58qASGVU49WoruFBuCg4V3wVQ&#39;,
    &#39;types&#39;: [&#39;atm&#39;, &#39;finance&#39;, &#39;point_of_interest&#39;, &#39;establishment&#39;]}],
  &#39;status&#39;: &#39;OK&#39;}</pre>
 </div>
@@ -13263,13 +13501,14 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[137]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">markers</span> <span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">bank</span> <span class="ow">in</span> <span class="n">banking_places</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
     <span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bank</span><span class="p">[</span><span class="s1">&#39;formatted_address&#39;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">bank</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;formatted_address&#39;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">markers</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13285,18 +13524,21 @@ Name: 0, dtype: object</pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[&#39;SunTrust Bank&#39;, &#34;965 L&#39;Enfant Plaza SW, Washington, DC 20024, United States&#34;]
-[&#39;M&amp;T Bank&#39;, &#39;555 12th St NW, Washington, DC 20004, United States&#39;]
 [&#39;SunTrust Bank&#39;, &#39;1445 New York Ave NW, Washington, DC 20005, United States&#39;]
-[&#39;SunTrust Bank&#39;, &#39;2 Massachusetts Ave NW, Washington, DC 20001, United States&#39;]
+[&#39;M&amp;T Bank&#39;, &#39;555 12th St NW, Washington, DC 20004, United States&#39;]
 [&#39;SunTrust Bank&#39;, &#39;1100 G St NW, Washington, DC 20005, United States&#39;]
+[&#39;SunTrust Bank&#39;, &#39;900 17th St NW, Washington, DC 20006, United States&#39;]
 [&#39;SunTrust Bank&#39;, &#39;1275 K St NW, Washington, DC 20005, United States&#39;]
 [&#39;M&amp;T Bank&#39;, &#39;1680 K St NW, Washington, DC 20006, United States&#39;]
 [&#39;M&amp;T Bank&#39;, &#39;1899 L St NW, Washington, DC 20036, United States&#39;]
-[&#39;Hew Federal Credit Union&#39;, &#39;888 First St NE, Washington, DC 20002, United States&#39;]
+[&#39;SunTrust Bank&#39;, &#39;2 Massachusetts Ave NW, Washington, DC 20001, United States&#39;]
+[&#39;Justice Federal Credit Union&#39;, &#39;500 12th St SW, Washington, DC 20024, United States&#39;]
+[&#39;Government Printing Office Federal Credit Union&#39;, &#39;732 North Capitol St NW, Washington, DC 20401, United States&#39;]
 [&#39;SIGNAL FINANCIAL FCU Shared Branch Express &amp; Smart ATM&#39;, &#39;1201 New York Ave NW, Washington, DC 20005, United States&#39;]
 [&#39;UNFCU&#39;, &#39;1775 Pennsylvania Ave NW, Washington, DC 20006, United States&#39;]
 [&#39;Hew Federal&#39;, &#39;200 Independence Ave SW, Washington, DC 20201, United States&#39;]
-[&#39;Justice Federal Credit Union&#39;, &#39;500 12th St SW, Washington, DC 20024, United States&#39;]
+[&#39;Hew Federal Credit Union&#39;, &#39;888 First St NE, Washington, DC 20002, United States&#39;]
+[&#34;965 L&#39;Enfant Plaza SW, Washington, DC 20024, United States&#34;, &#39;1445 New York Ave NW, Washington, DC 20005, United States&#39;, &#39;555 12th St NW, Washington, DC 20004, United States&#39;, &#39;1100 G St NW, Washington, DC 20005, United States&#39;, &#39;900 17th St NW, Washington, DC 20006, United States&#39;, &#39;1275 K St NW, Washington, DC 20005, United States&#39;, &#39;1680 K St NW, Washington, DC 20006, United States&#39;, &#39;1899 L St NW, Washington, DC 20036, United States&#39;, &#39;2 Massachusetts Ave NW, Washington, DC 20001, United States&#39;, &#39;500 12th St SW, Washington, DC 20024, United States&#39;, &#39;732 North Capitol St NW, Washington, DC 20401, United States&#39;, &#39;1201 New York Ave NW, Washington, DC 20005, United States&#39;, &#39;1775 Pennsylvania Ave NW, Washington, DC 20006, United States&#39;, &#39;200 Independence Ave SW, Washington, DC 20201, United States&#39;, &#39;888 First St NE, Washington, DC 20002, United States&#39;]
 </pre>
 </div>
 </div>
@@ -13305,9 +13547,102 @@ Name: 0, dtype: object</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Create-function-to-return-banking-service-locations-within-1-mile-(1600-meters)-of-home-address;-limited-to-top-ten-results">Create function to return banking service locations within 1 mile (1600 meters) of home address; limited to top ten results<a class="anchor-link" href="#Create-function-to-return-banking-service-locations-within-1-mile-(1600-meters)-of-home-address;-limited-to-top-ten-results">&#182;</a></h5>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[157]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define function for getting banking services near home address</span>
+<span class="k">def</span> <span class="nf">find_banking_services</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">bank_type</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="n">banking_places</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">places</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">bank_type</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+    <span class="n">locations</span> <span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">bank</span> <span class="ow">in</span> <span class="n">banking_places</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]:</span>
+        <span class="n">locations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">bank</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;formatted_address&#39;</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">locations</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[158]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test find_banking_services </span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;bank&#39;</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1">#home address reference from above</span>
+<span class="n">bank_type</span> <span class="o">=</span> <span class="s1">&#39;atm&#39;</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">1600</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">find_banking_services</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">bank_type</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+<span class="n">z</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[158]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[&#39;Fifth Third Bank&#39;, &#39;200 State St, Charlotte, MI 48813, United States&#39;],
+ [&#39;ATM (Regions Bank)&#39;,
+  &#39;2719 Airline Dr, Bossier City, LA 71111, United States&#39;],
+ [&#39;ATM (Union Bank)&#39;,
+  &#39;8301 La Palma Ave, Buena Park, CA 90620, United States&#39;],
+ [&#39;ATM (Us Bank)&#39;, &#39;300 Grant St, Carthage, MO 64836, United States&#39;],
+ [&#39;ATM (First Merit Bank)&#39;,
+  &#39;1715 W 47th St, Chicago, IL 60609, United States&#39;],
+ [&#39;ATM (Fifth Third Bank)&#39;,
+  &#39;3424 Wilkinson Blvd, Charlotte, NC 28208, United States&#39;],
+ [&#39;ATM (Ameris Bank)&#39;, &#39;285 S Broad St, Ellaville, GA 31806, United States&#39;],
+ [&#39;ATM (First Midwest Bank)&#39;,
+  &#39;7645 W Saint Francis Rd, Frankfort, IL 60423, United States&#39;],
+ [&#39;ATM (MB Financial Bank)&#39;,
+  &#39;1620 N Milwaukee Ave, Vernon Hills, IL 60061, United States&#39;]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[155]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##Google maps static API can only place 10 total markers</span>
@@ -13326,42 +13661,16 @@ Name: 0, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[119]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#34;965 L&#39;Enfant Plaza SW, Washington, DC 20024, United States|555 12th St NW, Washington, DC 20004, United States|1445 New York Ave NW, Washington, DC 20005, United States|2 Massachusetts Ave NW, Washington, DC 20001, United States|1100 G St NW, Washington, DC 20005, United States|1275 K St NW, Washington, DC 20005, United States|1680 K St NW, Washington, DC 20006, United States|1899 L St NW, Washington, DC 20036, United States|888 First St NE, Washington, DC 20002, United States&#34;</pre>
+<pre>&#34;1420 K St NW, Washington, DC 20533, United States|1117 10th St NW, Washington, DC 20001, United States|435 8th St NW, Washington, DC 20004, United States|717 14th St NW, Washington, DC 20005, United States|435 8th St NW, Washington, DC 20004, United States|Imf Hq2 1900 Pennsylvania Ave Nw, Washington, DC 20006, United States|514 19th St NW, Washington, DC 20006, United States|433 L&#39;Enfant Plaza SW, Washington, DC 20024, United States|1100 New York Ave NW, Washington, DC 20006, United States&#34;</pre>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
 </div>
 </div>
 
@@ -13384,13 +13693,15 @@ Name: 0, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[173]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">importlib.util</span>
-<span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="s2">&quot;create_map_markers&quot;</span><span class="p">,</span> 
-                                              <span class="s2">&quot;C:/Users/Jonathan/DirectDebit/src/create_map_markers.py&quot;</span><span class="p">)</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-<span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Test bringing in package -- found a better way using report lab so commented out</span>
 
-<span class="n">m</span><span class="o">=</span><span class="n">foo</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="c1"># import importlib.util</span>
+<span class="c1"># spec = importlib.util.spec_from_file_location(&quot;create_map_markers&quot;, </span>
+<span class="c1">#                                               &quot;C:/Users/Jonathan/DirectDebit/src/create_map_markers.py&quot;)</span>
+<span class="c1"># foo = importlib.util.module_from_spec(spec)</span>
+<span class="c1"># spec.loader.exec_module(foo)</span>
+
+<span class="c1"># m=foo.Map()</span>
 </pre></div>
 
 </div>
@@ -13403,7 +13714,7 @@ Name: 0, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[175]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_point</span><span class="p">(</span><span class="mf">38.8969</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.02</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># m.add_point(38.8969, -77.02)</span>
 </pre></div>
 
 </div>
@@ -13437,7 +13748,9 @@ Name: 0, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[240]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="c1">#&#39;zoom&#39;: &#39;13&#39;,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the next payload - is more complete</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="c1">#&#39;zoom&#39;: &#39;13&#39;,</span>
            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;400x400&#39;</span><span class="p">,</span> 
            <span class="c1">#&#39;scale&#39;: &#39;1&#39;,</span>
            <span class="s1">&#39;maptype&#39;</span><span class="p">:</span> <span class="s1">&#39;roadmap&#39;</span><span class="p">,</span>
@@ -13451,7 +13764,7 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[120]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#attempt at all the markers</span>
@@ -13470,7 +13783,7 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[121]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://maps.googleapis.com/maps/api/staticmap?&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
@@ -13483,7 +13796,7 @@ Name: 0, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[122]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
@@ -13503,7 +13816,7 @@ Name: 0, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[64]:</div>
+<div class="prompt output_prompt">Out[122]:</div>
 
 
 
@@ -18307,48 +18620,13 @@ D85e/H9uqZBSIDOnJwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-46-40492664e64f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>Pnew_img <span class="ansi-yellow-intense-fg ansi-bold">=</span> ImageOps<span class="ansi-yellow-intense-fg ansi-bold">.</span>expand<span class="ansi-yellow-intense-fg ansi-bold">(</span>Image<span class="ansi-yellow-intense-fg ansi-bold">.</span>open<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;C:/Users/Jonathan/DirectDebit/figures/test_image_.png&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>border<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">300</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>fill<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;black&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-fg">c:\users\jonathan\appdata\local\programs\python\python36\lib\site-packages\PIL\ImageOps.py</span> in <span class="ansi-cyan-fg">expand</span><span class="ansi-blue-fg">(image, border, fill)</span>
-<span class="ansi-green-intense-fg ansi-bold">    259</span>     width <span class="ansi-yellow-intense-fg ansi-bold">=</span> left <span class="ansi-yellow-intense-fg ansi-bold">+</span> image<span class="ansi-yellow-intense-fg ansi-bold">.</span>size<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> right
-<span class="ansi-green-intense-fg ansi-bold">    260</span>     height <span class="ansi-yellow-intense-fg ansi-bold">=</span> top <span class="ansi-yellow-intense-fg ansi-bold">+</span> image<span class="ansi-yellow-intense-fg ansi-bold">.</span>size<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> bottom
-<span class="ansi-green-fg">--&gt; 261</span><span class="ansi-red-fg">     </span>out <span class="ansi-yellow-intense-fg ansi-bold">=</span> Image<span class="ansi-yellow-intense-fg ansi-bold">.</span>new<span class="ansi-yellow-intense-fg ansi-bold">(</span>image<span class="ansi-yellow-intense-fg ansi-bold">.</span>mode<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>width<span class="ansi-yellow-intense-fg ansi-bold">,</span> height<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> _color<span class="ansi-yellow-intense-fg ansi-bold">(</span>fill<span class="ansi-yellow-intense-fg ansi-bold">,</span> image<span class="ansi-yellow-intense-fg ansi-bold">.</span>mode<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    262</span>     out<span class="ansi-yellow-intense-fg ansi-bold">.</span>paste<span class="ansi-yellow-intense-fg ansi-bold">(</span>image<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>left<span class="ansi-yellow-intense-fg ansi-bold">,</span> top<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    263</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> out
-
-<span class="ansi-green-fg">c:\users\jonathan\appdata\local\programs\python\python36\lib\site-packages\PIL\Image.py</span> in <span class="ansi-cyan-fg">new</span><span class="ansi-blue-fg">(mode, size, color)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2061</span>         color <span class="ansi-yellow-intense-fg ansi-bold">=</span> ImageColor<span class="ansi-yellow-intense-fg ansi-bold">.</span>getcolor<span class="ansi-yellow-intense-fg ansi-bold">(</span>color<span class="ansi-yellow-intense-fg ansi-bold">,</span> mode<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2062</span> 
-<span class="ansi-green-fg">-&gt; 2063</span><span class="ansi-red-fg">     </span><span class="ansi-green-intense-fg ansi-bold">return</span> Image<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>_new<span class="ansi-yellow-intense-fg ansi-bold">(</span>core<span class="ansi-yellow-intense-fg ansi-bold">.</span>fill<span class="ansi-yellow-intense-fg ansi-bold">(</span>mode<span class="ansi-yellow-intense-fg ansi-bold">,</span> size<span class="ansi-yellow-intense-fg ansi-bold">,</span> color<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2064</span> 
-<span class="ansi-green-intense-fg ansi-bold">   2065</span> 
-
-<span class="ansi-red-fg">TypeError</span>: function takes exactly 1 argument (3 given)</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -18375,6 +18653,58 @@ D85e/H9uqZBSIDOnJwAAAABJRU5ErkJggg==
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
@@ -20805,13 +21135,22 @@ D85e/H9uqZBSIDOnJwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Search-for-banking-services-near-office">Search for banking services near office<a class="anchor-link" href="#Search-for-banking-services-near-office">&#182;</a></h2>
+</div>
+</div>
 </div>
     </div>
   </div>
