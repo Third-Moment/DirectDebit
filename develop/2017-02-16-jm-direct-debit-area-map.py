@@ -26,7 +26,7 @@
 # ## Imports
 # 
 
-# In[2]:
+# In[48]:
 
 #Imports first
 
@@ -36,7 +36,7 @@ import requests
 import pandas as pd
 from googlemaps import googlemaps
 import json
-from PIL import Image
+from PIL import Image, ImageOps
 from io import BytesIO
 
 
@@ -91,7 +91,7 @@ address
 
 # ## Search for banking services near home
 
-# In[7]:
+# In[ ]:
 
 
 
@@ -142,27 +142,27 @@ lat_long = {'lat': lat['geometry']['location']['lat'], 'lon':lat['geometry']['lo
 lat_long
 
 
-# In[14]:
+# In[31]:
 
-banking_places = gmaps.places("banking services", location=(38.8921037,-77.0259612), type='atm')
+banking_places = gmaps.places("banking services", location=(38.8921037,-77.0259612), type='atm', radius=1600)
 
 
-# In[15]:
+# In[32]:
 
 banking_places
 
 
-# In[16]:
+# In[33]:
 
 banking_places.keys()
 
 
-# In[17]:
+# In[34]:
 
 print(json.dumps(banking_places['results'], indent=4))
 
 
-# In[18]:
+# In[35]:
 
 markers =[]
 for bank in banking_places['results']:
@@ -170,7 +170,7 @@ for bank in banking_places['results']:
     print([bank['name'], bank['formatted_address']])
 
 
-# In[19]:
+# In[36]:
 
 ##Google maps static API can only place 10 total markers
 
@@ -219,31 +219,40 @@ payload = {#'zoom': '13',
            'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
 
 
-# In[22]:
+# In[58]:
 
 #attempt at all the markers
 payload = {#'zoom': '13',
-           'size': '400x400', 
+           'size': '100x100', 
            #'scale': '1',
            'maptype': 'roadmap',
            'markers': markers,
     'key':api_key}
 
 
-# In[23]:
+# In[59]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
 
 
 
-# In[24]:
+# In[64]:
 
 i = Image.open(BytesIO(r.content))
-i
+i = i.convert("RGBA")
+new_img = ImageOps.expand(converted_image,border=5,fill='black')
+new_img.save('C:/Users/Jonathan/DirectDebit/figures/test_image.png')
+
+new_img
 
 
-# In[211]:
+# In[61]:
+
+
+
+
+# In[46]:
 
 
 
@@ -256,7 +265,23 @@ def create_map_markers(:
     markers
 
 
+# In[50]:
+
+
+
+
+
+# In[53]:
+
+new_img = ImageOps.expand(converted_image,border=2,fill='black')
+
+
+# In[54]:
+
+new_img
+
+
 # In[ ]:
 
-
+print
 
