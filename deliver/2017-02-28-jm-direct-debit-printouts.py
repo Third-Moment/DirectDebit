@@ -25,7 +25,7 @@
 
 # ## Set imports
 
-# In[138]:
+# In[182]:
 
 #Imports first
 
@@ -46,6 +46,9 @@ from reportlab.lib.pagesizes  import letter
 from reportlab.lib.pagesizes  import landscape
 from reportlab.platypus import Image, Table
 import time
+
+# to view pdf
+from IPython.display import IFrame
 
 
 # #### Import data
@@ -290,9 +293,9 @@ def generate_pdf(data_file, pdf_file_name, api_key):
 generate_pdf(df_clean, pdf_file_name,api_key)
 
 
-# In[ ]:
+# In[186]:
 
-
+IFrame("http://localhost:8888/files/deliver/direct_debit_poc.pdf", width=600, height=300)
 
 
 # In[ ]:
