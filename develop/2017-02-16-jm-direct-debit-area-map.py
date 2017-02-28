@@ -53,9 +53,16 @@ ouput_loc = 'C:/Users/Jonathan/DirectDebit/data/'
 df_clean = pd.read_csv(file_path)
 
 
-# In[102]:
+# In[214]:
 
 df_clean.head()
+
+
+# In[193]:
+
+for row in df_clean:
+    home_address = df_clean.NUMBER + " " + df_clean.STREET + " " + df_clean.CITY + " " + df_clean.REGION
+    print(home_address)
 
 
 # In[5]:
@@ -79,19 +86,21 @@ address
 
 # #####  Function to create home address
 
-# In[100]:
+# In[228]:
 
 # Define function for getting all the needed employee details
-def create_employee_home_address(data_frame, row_num): 
-    home_address = ' '.join([data_frame.iloc[row_num]['NUMBER'],data_frame.iloc[row_num]['STREET'], data_frame.iloc[row_num]['CITY'],data_frame.iloc[row_num]['REGION']])
-    return home_address
+def create_employee_home_address(data_frame): 
+    address = ' '.join([data_frame.iloc[row]['NUMBER'],data_frame.iloc[row]['STREET'], data_frame.iloc[row]['CITY'],data_frame.iloc[row]['REGION']])
+    address
 
 
-# In[104]:
+# In[231]:
 
 # test create_employee_home_address function
-x = create_employee_home_address(df_clean, 0)
-x
+for row in df_clean:
+    name = df_clean.First_name + " " + df_clean.Last_name
+    print(name)
+df_clean.
 
 
 # ##### Test googlemaps api...
@@ -161,7 +170,7 @@ def create_employee_office_address(data_frame, row_num):
     return office_address
 
 
-# In[106]:
+# In[254]:
 
 # test create_employee_home_address function
 x = create_employee_office_address(df_clean, 0)
@@ -189,17 +198,17 @@ KEY = api_key
 
 
 
-# In[128]:
+# In[232]:
 
 banking_places = gmaps.places("banking services", location=lat_long, type='atm', radius=1600)
 
 
-# In[126]:
+# In[253]:
 
 banking_places
 
 
-# In[33]:
+# In[234]:
 
 banking_places.keys()
 
@@ -209,7 +218,7 @@ banking_places.keys()
 print(json.dumps(banking_places['results'], indent=4))
 
 
-# In[137]:
+# In[252]:
 
 markers =[]
 for bank in banking_places['results']:
@@ -220,7 +229,7 @@ print(markers)
 
 # #####  Create function to return banking service locations within 1 mile (1600 meters) of home address; limited to top ten results
 
-# In[157]:
+# In[248]:
 
 # Define function for getting banking services near home address
 def find_banking_services(query, location, bank_type, radius):
@@ -233,11 +242,11 @@ def find_banking_services(query, location, bank_type, radius):
 
 
 
-# In[158]:
+# In[256]:
 
 # Test find_banking_services 
 query = 'bank'
-location = x  #home address reference from above
+location = y  #home address reference from above
 bank_type = 'atm'
 radius = 1600
 
@@ -250,18 +259,13 @@ z
 
 
 
-# In[119]:
+# In[159]:
 
 ##Google maps static API can only place 10 total markers
 
 s = "|";
 markers = s.join(markers[0:9])
 markers
-
-
-# In[ ]:
-
-
 
 
 # In[173]:
@@ -293,25 +297,46 @@ payload = {#'zoom': '13',
            'markers': '435 8th St NW, Washington, DC 20004, United States|555 12th St NW, Washington, DC 20004, United States ',}
 
 
-# In[120]:
+# In[164]:
+
+# function for converting banking services near an address to a list of markers to be plotted
+def create_map_markers(marker_address_list):
+    s = "|"
+    return s.join(marker_address_list)
+
+
+# In[257]:
+
+# test create_map_markers function
+aa = [bank[1] for bank in z]
+bb = create_map_markers(aa)
+bb
+
+
+# In[179]:
+
+
+
+
+# In[258]:
 
 #attempt at all the markers
 payload = {#'zoom': '13',
-           'size': '100x100', 
+           'size': '400x400', 
            #'scale': '1',
            'maptype': 'roadmap',
-           'markers': markers,
+           'markers': bb,
     'key':api_key}
 
 
-# In[121]:
+# In[259]:
 
 
 r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
 
 
 
-# In[122]:
+# In[260]:
 
 i = Image.open(BytesIO(r.content))
 i = i.convert("RGBA")
@@ -321,22 +346,29 @@ new_img.save('C:/Users/Jonathan/DirectDebit/figures/test_image.png')
 new_img
 
 
-# In[61]:
+# #####  Create function to return google map as png from banking services near address
+
+# In[240]:
+
+# Define function that takes a list of markers and outputs a formatted map
+
+def create_map_with_markers(markers, api_key):
+    payload = {'size': '400x400', 
+           'maptype': 'roadmap',
+           'markers': markers,
+               'key':api_key}
+    r = requests.get('https://maps.googleapis.com/maps/api/staticmap?', params=payload)
+    i = Image.open(BytesIO(r.content))
+    converted_image = i.convert("RGBA")
+    return ImageOps.expand(converted_image,border=5,fill='black')
 
 
+# In[241]:
 
+# test create_map_with_markers function
 
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-def create_map_markers(:
-    s = "|"
-    markers = s.join(markers[0:9])
-    markers
+cc = create_map_with_markers(bb, api_key)
+cc
 
 
 # In[50]:
@@ -344,11 +376,7 @@ def create_map_markers(:
 
 
 
-
-# In[ ]:
-
-
-
+# ## Generate PDFs based on bank locations and maps
 
 # In[ ]:
 
@@ -367,12 +395,17 @@ def create_map_markers(:
 
 # In[53]:
 
-new_img = ImageOps.expand(converted_image,border=2,fill='black')
 
 
-# In[54]:
 
-new_img
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
 
 # In[ ]:

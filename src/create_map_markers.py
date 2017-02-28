@@ -38,3 +38,7 @@ if __name__ == "__main__":
         map.add_point((39.908715, 116.397389))
         with open("output.html", "w") as out:
             print(map, file=out)
+
+
+# Grabbed from http://stackoverflow.com/questions/22342097/is-it-possible-to-create-a-google-map-from-python
+# :thumbsup:
